@@ -1,0 +1,33 @@
+.Navbar {
+	justify-content: space-between;
+	padding: 0.5rem 2rem;
+}
+
+.searchContainer {
+	border-bottom: 2px solid black;
+}
+
+.searchContainer > * {
+	border-style: none;
+	background-color: transparent;
+	color: black;
+}
+
+.searchContainer > input {
+	margin-right: 0.5rem;
+}
+
+.searchContainer > input:focus {
+	border: none;
+	box-shadow: none;
+}
+
+.searchContainer > button:focus {
+	border: none;
+	box-shadow: none;
+}
+
+.searchContainer > button:hover {
+	background-color: rgb(241, 241, 241);
+	color: black;
+}
