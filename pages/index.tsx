@@ -5,7 +5,7 @@ export default function Home() {
 	return (
 		<Layout>
 			<Head>
-				<title>MYSHOP</title>
+				<title>MYSHOP </title>
 				<link rel="icon" href="/favicon.ico" />
 			</Head>
 		</Layout>

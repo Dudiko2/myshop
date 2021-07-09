@@ -1,16 +1,17 @@
 import { FC, ReactNode } from "react";
 import Header from "../components/Header";
+import Footer from "../components/Footer";
 
 interface Props {
-	childern?: ReactNode;
+	children?: ReactNode;
 }
 
-const Layout: FC<Props> = ({ childern }) => {
+const Layout: FC<Props> = ({ children }) => {
 	return (
 		<>
 			<Header />
-			{childern}
-			{/* Footer */}
+			<main>{children}</main>
+			<Footer />
 		</>
 	);
 };

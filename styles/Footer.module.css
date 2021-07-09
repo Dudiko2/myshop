@@ -1,0 +1,36 @@
+.Footer {
+	background-color: black;
+	color: white;
+	padding: 0.5rem;
+}
+
+.company {
+	padding: 6rem 0;
+}
+
+.copy {
+	display: flex;
+	justify-content: center;
+}
+
+.legalLinks {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+}
+
+@media only screen and (min-width: 992px) {
+	.copy {
+		justify-content: flex-start;
+	}
+
+	.legalLinks {
+		flex-direction: row;
+		justify-content: flex-end;
+	}
+
+	.legalLinks > li {
+		margin: 0 0.4rem;
+	}
+}

@@ -1,25 +1,37 @@
 import { Navbar, Nav, Form, FormControl, Button } from "react-bootstrap";
 import { FC } from "react";
+import Link from "next/link";
 import styles from "../styles/Header.module.css";
+
+// NOTE: Revise links
 
 const Header: FC = () => {
 	return (
-		<Navbar fixed="top" className={styles.Navbar}>
-			<Nav>
+		<Navbar expand="lg" className={styles.Navbar}>
+			<Link passHref href="/">
 				<Navbar.Brand>MYSHOP</Navbar.Brand>
-				<Nav.Item>
-					<Nav.Link>Collections</Nav.Link>
-				</Nav.Item>
-				<Nav.Item>
-					<Nav.Link>About</Nav.Link>
-				</Nav.Item>
-			</Nav>
-			<Form inline>
-				<div className={styles.searchContainer}>
-					<FormControl type="text" placeholder="Search" />
-					<Button>B</Button>
+			</Link>
+			<Navbar.Toggle />
+			<Navbar.Collapse>
+				<div className={styles.collapseable}>
+					<Nav className={`${styles.Navlinks} capitalize`}>
+						<Nav.Item>
+							<Link passHref href="collections">
+								<Nav.Link>collections</Nav.Link>
+							</Link>
+						</Nav.Item>
+						<Nav.Item>
+							<Nav.Link>about</Nav.Link>
+						</Nav.Item>
+					</Nav>
+					<Form inline>
+						<div className={styles.searchContainer}>
+							<FormControl type="text" placeholder="Search" />
+							<Button>B</Button>
+						</div>
+					</Form>
 				</div>
-			</Form>
+			</Navbar.Collapse>
 		</Navbar>
 	);
 };

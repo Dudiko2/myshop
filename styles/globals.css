@@ -1,3 +1,7 @@
+* {
+	box-sizing: border-box;
+}
+
 html,
 body {
 	padding: 0;
@@ -11,6 +15,21 @@ a {
 	text-decoration: none;
 }
 
-* {
-	box-sizing: border-box;
+a:hover {
+	text-decoration: none;
+}
+
+ul {
+	list-style: none;
+}
+
+ul,
+li,
+p {
+	margin: 0;
+	padding: 0;
+}
+
+.capitalize {
+	text-transform: capitalize;
 }
