@@ -25,7 +25,7 @@ const Header: FC = () => {
 						</Nav.Item>
 					</Nav>
 					<Form inline>
-						<div className={styles.searchContainer}>
+						<div className={`input-cont`}>
 							<FormControl type="text" placeholder="Search" />
 							<Button>B</Button>
 						</div>

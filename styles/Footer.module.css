@@ -5,7 +5,34 @@
 }
 
 .company {
-	padding: 6rem 0;
+	padding: 4rem 0 6rem 0;
+}
+
+.company > * {
+	padding: 1.4rem;
+}
+
+.company .sectionHeading {
+	margin: 2rem 0;
+}
+
+.company .mailContainer {
+	color: white;
+	margin-top: 1rem;
+	border-bottom: 2px solid white;
+}
+
+.mailContainer > button {
+	color: white;
+}
+
+.mailContainer > input {
+	color: white;
+}
+
+.mailContainer > input:focus {
+	background-color: inherit;
+	color: inherit;
 }
 
 .copy {

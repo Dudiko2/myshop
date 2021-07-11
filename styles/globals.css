@@ -33,3 +33,33 @@ p {
 .capitalize {
 	text-transform: capitalize;
 }
+
+.input-cont {
+	display: flex;
+	border-bottom: 2px solid black;
+}
+
+.input-cont > * {
+	border-style: none;
+	background-color: transparent;
+	color: black;
+}
+
+.input-cont > input {
+	margin-right: 0.5rem;
+}
+
+.input-cont > input:focus {
+	border: none;
+	box-shadow: none;
+}
+
+.input-cont > button:focus {
+	border: none;
+	box-shadow: none;
+}
+
+.input-cont > button:hover {
+	background-color: rgb(241, 241, 241);
+	color: black;
+}
