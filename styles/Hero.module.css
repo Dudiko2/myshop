@@ -1,0 +1,27 @@
+.Hero {
+	position: relative;
+	height: 95vh;
+	display: flex;
+	align-items: center;
+}
+
+.Hero .content {
+	font-size: 22px;
+}
+
+.Hero .heading {
+	margin: 1rem 0;
+}
+
+.button {
+	letter-spacing: 2px;
+	margin: 2rem 0;
+	padding: 0.8rem 2rem;
+	border-radius: 1px;
+}
+
+@media only screen and (min-width: 992px) {
+	.Hero .content {
+		font-size: 26px;
+	}
+}
