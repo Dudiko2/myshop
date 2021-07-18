@@ -1,0 +1,22 @@
+.Gallery {
+	padding: 4rem 0;
+}
+
+.card {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	padding: 1rem 0;
+}
+
+.imagecont {
+	position: relative;
+}
+
+.cardbody {
+	margin: 1rem 0;
+}
+
+.price {
+	color: gray;
+}
