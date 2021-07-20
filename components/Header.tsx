@@ -16,7 +16,7 @@ const Header: FC = () => {
 				<div className={styles.collapseable}>
 					<Nav className={`${styles.Navlinks} capitalize`}>
 						<Nav.Item>
-							<Link passHref href="collections">
+							<Link passHref href="/">
 								<Nav.Link>collections</Nav.Link>
 							</Link>
 						</Nav.Item>

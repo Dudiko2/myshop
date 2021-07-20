@@ -2,6 +2,6 @@ module.exports = {
 	reactStrictMode: true,
 	webpack5: false,
 	images: {
-		domains: ["placeimg.com"],
+		domains: ["placeimg.com", "cdn.shopify.com"],
 	},
 };
