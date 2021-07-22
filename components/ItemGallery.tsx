@@ -43,9 +43,7 @@ const Item = ({ product }: any) => {
 					</a>
 				</Link>
 				<div className={styles.cardbody}>
-					<h3>
-						<Link href={path}>{title}</Link>
-					</h3>
+					<Link href={path}>{title}</Link>
 					{/* <span className={styles.price}>19.99</span> */}
 				</div>
 			</div>
