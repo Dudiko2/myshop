@@ -7,7 +7,7 @@ import styles from "../styles/Header.module.css";
 
 const Header: FC = () => {
 	return (
-		<Navbar expand="lg" className={styles.Navbar}>
+		<Navbar expand="lg" className={`${styles.Navbar}`}>
 			<Link passHref href="/">
 				<Navbar.Brand>MYSHOP</Navbar.Brand>
 			</Link>

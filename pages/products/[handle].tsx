@@ -1,3 +1,4 @@
+import Head from "next/head";
 import Layout from "../../hoc/Layout";
 import { fetchProductByHandle, fetchProducts } from "../../services/shopify";
 import { GetStaticPaths, GetStaticProps } from "next";
@@ -10,6 +11,9 @@ interface ProductProps {
 const Product: FC<ProductProps> = ({ product }) => {
 	return (
 		<Layout>
+			<Head>
+				<title>MYSHOP - {product.title}</title>
+			</Head>
 			<div>{product.title}</div>
 		</Layout>
 	);
