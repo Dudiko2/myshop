@@ -1,5 +1,5 @@
 .Navbar {
-	position: relative;
+	position: absolute;
 	padding: 0.5rem;
 	width: 100%;
 	z-index: 100;
@@ -8,11 +8,32 @@
 .collapseable {
 	display: flex;
 	flex-direction: column;
-	align-items: center;
+	/* changes */
+	align-items: flex-start;
+	position: fixed;
+	top: 0;
+	left: 0;
+	background-color: white;
+	padding: 2rem;
+	height: 100vh;
+	transform: translateX(-100%);
+	transition-duration: 200ms;
+	transition-timing-function: ease-out;
+	max-width: 80vw;
+}
+
+.stick {
+	position: fixed;
+	background-color: white;
+}
+
+.show {
+	transform: translate(0);
 }
 
 .Navlinks {
-	align-items: center;
+	/*changes*/
+	align-items: flex-start;
 }
 
 @media only screen and (min-width: 992px) {
@@ -25,5 +46,12 @@
 		flex-direction: row;
 		justify-content: space-between;
 		width: 100%;
+		/*changes*/
+		align-items: center;
+		position: static;
+		background-color: transparent;
+		padding: initial;
+		height: auto;
+		transform: initial;
 	}
 }
