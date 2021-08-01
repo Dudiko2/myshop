@@ -1,6 +1,8 @@
 import { FC } from "react";
 import { Container, Row, Col } from "react-bootstrap";
 import Image from "next/image";
+import styles from "../styles/ProductPageMain.module.css";
+import InputSelect from "./InputSelect";
 
 interface ProductPageMainProps {
 	title: string;
@@ -43,17 +45,23 @@ const ProductPageMain: FC<ProductPageMainProps> = ({
 						</Row>
 						<Row>
 							<Col>
-								<p>{description}</p>
+								<p className={styles.desc}>{description}</p>
 							</Col>
 						</Row>
 						{variants && (
 							<Row>
 								<Col>
-									<select>
+									<InputSelect>
 										{variants.map((v) => {
-											return <option key={v.id}>{v.title}</option>;
+											return (
+												<InputSelect.Option
+													key={v.id}
+													text={v.title}
+													value={v.title}
+												/>
+											);
 										})}
-									</select>
+									</InputSelect>
 								</Col>
 							</Row>
 						)}
