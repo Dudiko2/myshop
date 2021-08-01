@@ -35,7 +35,7 @@ const Header: FC = () => {
 					</div>
 				</Form>
 			</div>
-			<Navbar.Toggle className={styles.front} onClick={toggleMenu} />
+			<Navbar.Toggle className={styles.toggleButton} onClick={toggleMenu} />
 		</Navbar>
 	);
 };

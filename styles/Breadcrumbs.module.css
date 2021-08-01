@@ -1,3 +1,12 @@
 .Breadcrumbs > ol {
 	background-color: transparent;
 }
+
+.Breadcrumbs,
+.Breadcrumbs a {
+	font-family: "Open Sans", sans-serif;
+}
+
+.crumb + .crumb::before {
+	content: "-";
+}

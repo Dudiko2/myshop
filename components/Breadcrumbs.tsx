@@ -15,7 +15,10 @@ interface Props {
 const Breadcrumbs: FC<Props> = ({ crumbs }) => {
 	const items = crumbs.map((c, index) => (
 		<Link key={`${c.pageName}-${c.path}`} href={c.path || "#"} passHref>
-			<Breadcrumb.Item active={index === crumbs.length - 1}>
+			<Breadcrumb.Item
+				className={styles.crumb}
+				active={index === crumbs.length - 1}
+			>
 				{c.pageName}
 			</Breadcrumb.Item>
 		</Link>

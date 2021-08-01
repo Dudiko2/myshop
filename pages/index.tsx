@@ -1,5 +1,5 @@
 import Head from "next/head";
-import LayoutHero from "../hoc/LayoutHero";
+import LayoutHero from "../wrappers/LayoutHero";
 import ItemGallery from "../components/ItemGallery";
 import { fetchProducts } from "../services/shopify";
 import { FC } from "react";
