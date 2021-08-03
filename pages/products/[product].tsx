@@ -7,6 +7,7 @@ import Breadcrumbs, { Crumb } from "../../components/Breadcrumbs";
 import { fetchProductByHandle, fetchProducts } from "../../services/shopify";
 import { Col, Container, Row } from "react-bootstrap";
 import ProductPageMain from "../../components/ProductPageMain";
+import Section from "../../wrappers/Section";
 
 interface ProductProps {
 	product: any;
@@ -40,7 +41,7 @@ const Product: FC<ProductProps> = ({ product }) => {
 				<Breadcrumbs crumbs={crumbs} />
 			</Container>
 
-			<Container fluid>
+			<Section>
 				<ProductPageMain
 					title={product.title}
 					description={product.description}
@@ -50,7 +51,7 @@ const Product: FC<ProductProps> = ({ product }) => {
 					price={selectedVariant.price}
 					currency={selectedVariant.priceV2.currencyCode}
 				/>
-			</Container>
+			</Section>
 		</Layout>
 	);
 };

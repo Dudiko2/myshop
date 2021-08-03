@@ -13,7 +13,7 @@ const LayoutHero: FC<Props> = ({ children }) => {
 		<div className={styles.Layout}>
 			<Header />
 			<Hero />
-			<div>{children}</div>
+			<main>{children}</main>
 			<Footer />
 		</div>
 	);

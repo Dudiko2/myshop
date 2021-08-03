@@ -1,5 +1,5 @@
 import { FC } from "react";
-import { Container, Row, Col } from "react-bootstrap";
+import { Container, Row, Col, Button } from "react-bootstrap";
 import Image from "next/image";
 import styles from "../styles/ProductPageMain.module.css";
 import InputSelect from "./InputSelect";
@@ -25,51 +25,44 @@ const ProductPageMain: FC<ProductPageMainProps> = ({
 }) => {
 	return (
 		<Container>
-			<Row>
+			<Row className={styles.mainRow}>
 				<Col>
-					<Image
-						layout="responsive"
-						src={imgSrc}
-						alt={imgAlt || "product variant"}
-						height="560"
-						width="635"
-					/>
+					<div className={styles.imgBox}>
+						<Image
+							layout="responsive"
+							src={imgSrc}
+							alt={imgAlt || "product variant"}
+							height="560"
+							width="635"
+						/>
+					</div>
 				</Col>
 				<Col>
-					<Container>
+					<Container className={styles.productDetails}>
 						<Row>
 							<Col>
 								<h1>{title}</h1>
 								<span>{`${currency} ${price}`}</span>
 							</Col>
 						</Row>
-						<Row>
-							<Col>
-								<p className={styles.desc}>{description}</p>
-							</Col>
-						</Row>
-						{variants && (
-							<Row>
-								<Col>
-									<InputSelect>
-										{variants.map((v) => {
-											return (
-												<InputSelect.Option
-													key={v.id}
-													text={v.title}
-													value={v.title}
-												/>
-											);
-										})}
-									</InputSelect>
-								</Col>
-							</Row>
-						)}
-						<Row>
-							<Col>
-								<button>add to cart</button>
-							</Col>
-						</Row>
+						<p className={styles.desc}>{description}</p>
+
+						<div className={styles.buttons}>
+							{variants && (
+								<InputSelect>
+									{variants.map((v) => {
+										return (
+											<InputSelect.Option
+												key={v.id}
+												text={v.title}
+												value={v.title}
+											/>
+										);
+									})}
+								</InputSelect>
+							)}
+							<Button>add to cart</Button>
+						</div>
 					</Container>
 				</Col>
 			</Row>

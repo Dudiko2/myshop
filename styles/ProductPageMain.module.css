@@ -1,4 +1,33 @@
+.mainRow {
+	align-items: stretch;
+	justify-content: center;
+	overflow: hidden;
+}
+
+.imgBox {
+	background-color: white;
+	height: 100%;
+	padding: 1rem;
+}
+
+.productDetails {
+	background-color: white;
+	height: 100%;
+	padding: 1rem;
+}
+
+.productDetails p {
+	padding: 0 1rem;
+}
+
 .desc {
 	font-weight: 500;
 	color: var(--gray);
+}
+
+.buttons {
+	display: flex;
+	justify-content: flex-start;
+	align-items: center;
+	margin: 1rem 0;
 }
