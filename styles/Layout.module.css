@@ -1,4 +1,5 @@
 .Layout {
 	/* needed for positioning the Header to the top of the page without being sticky */
 	position: relative;
+	background-color: #fafafa;
 }

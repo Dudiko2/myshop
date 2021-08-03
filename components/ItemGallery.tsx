@@ -28,9 +28,9 @@ const Item = ({ product }: any) => {
 
 	return (
 		<Col>
-			<div className={styles.card}>
-				<Link href={path}>
-					<a>
+			<Link href={path}>
+				<a>
+					<div className={styles.card}>
 						<div className={styles.imagecont}>
 							<Image
 								layout="responsive"
@@ -40,13 +40,14 @@ const Item = ({ product }: any) => {
 								width="635"
 							/>
 						</div>
-					</a>
-				</Link>
-				<div className={styles.cardbody}>
-					<Link href={path}>{title}</Link>
-					{/* <span className={styles.price}>19.99</span> */}
-				</div>
-			</div>
+
+						<div className={styles.cardbody}>
+							{title}
+							{/* <span className={styles.price}>19.99</span> */}
+						</div>
+					</div>
+				</a>
+			</Link>
 		</Col>
 	);
 };
