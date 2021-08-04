@@ -27,7 +27,7 @@ const ProductPageMain: FC<ProductPageMainProps> = ({
 		<Container>
 			<Row className={styles.mainRow}>
 				<Col>
-					<div className={styles.imgBox}>
+					<div className={styles.box}>
 						<Image
 							layout="responsive"
 							src={imgSrc}
@@ -38,7 +38,7 @@ const ProductPageMain: FC<ProductPageMainProps> = ({
 					</div>
 				</Col>
 				<Col>
-					<Container className={styles.productDetails}>
+					<Container className={`${styles.productDetails} ${styles.box}`}>
 						<Row>
 							<Col>
 								<h1>{title}</h1>
@@ -61,13 +61,17 @@ const ProductPageMain: FC<ProductPageMainProps> = ({
 									})}
 								</InputSelect>
 							)}
-							<Button>add to cart</Button>
+							<AddToCartButton />
 						</div>
 					</Container>
 				</Col>
 			</Row>
 		</Container>
 	);
+};
+
+const AddToCartButton = () => {
+	return <Button className={styles.atc}>add to cart</Button>;
 };
 
 export default ProductPageMain;
