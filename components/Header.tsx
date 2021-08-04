@@ -1,5 +1,5 @@
 import { Navbar, Nav, Form, FormControl, Button } from "react-bootstrap";
-import { FC, useState } from "react";
+import { FC, useState, useEffect } from "react";
 import Link from "next/link";
 import styles from "../styles/Header.module.css";
 
@@ -7,13 +7,32 @@ import styles from "../styles/Header.module.css";
 
 const Header: FC = () => {
 	const [isOpen, setIsOpen] = useState(false);
+	const [isScrolled, setIsScrolled] = useState(false);
+
+	useEffect(() => {
+		const handleScroll = () => {
+			if (window.scrollY > 50) {
+				if (!isScrolled) setIsScrolled(true);
+			} else {
+				if (isScrolled) setIsScrolled(false);
+			}
+		};
+		window.addEventListener("scroll", handleScroll);
+
+		return () => {
+			window.removeEventListener("scroll", handleScroll);
+		};
+	}, [isScrolled]);
 
 	const toggleMenu = () => {
 		setIsOpen(!isOpen);
 	};
 
 	return (
-		<Navbar expand="lg" className={`${styles.Navbar}`}>
+		<Navbar
+			expand="lg"
+			className={`${styles.Navbar} ${isScrolled ? styles.scrolled : ""}`}
+		>
 			<Link passHref href="/">
 				<Navbar.Brand>MYSHOP</Navbar.Brand>
 			</Link>

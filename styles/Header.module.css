@@ -1,8 +1,12 @@
 .Navbar {
-	position: relative;
+	position: fixed;
 	padding: 0.5rem;
 	width: 100%;
 	z-index: 100;
+}
+
+.scrolled {
+	background-color: white;
 }
 
 .collapseable {
