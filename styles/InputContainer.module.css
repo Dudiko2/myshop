@@ -1,0 +1,29 @@
+.Container {
+	display: flex;
+	border-bottom: 2px solid black;
+}
+
+.Container > * {
+	border-style: none;
+	background-color: transparent;
+	color: black;
+}
+
+.Container > input {
+	margin-right: 0.5rem;
+}
+
+.Container > input:focus {
+	border: none;
+	box-shadow: none;
+}
+
+.Container > button:focus {
+	border: none;
+	box-shadow: none;
+}
+
+.Container > button:hover {
+	background-color: rgb(241, 241, 241);
+	color: black;
+}

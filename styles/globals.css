@@ -4,6 +4,7 @@
 	--open-sans: "Open Sans", sans-serif;
 	--c-light: #fafafa;
 	--box-border: 5px solid black;
+	--box-shadow-down: 0px 10px 15px -4px rgba(0, 0, 0, 0.05);
 }
 
 * {
@@ -60,37 +61,6 @@ p {
 
 .uppercase {
 	text-transform: uppercase;
-}
-
-/* should make a wrapper component for these */
-.input-cont {
-	display: flex;
-	border-bottom: 2px solid black;
-}
-
-.input-cont > * {
-	border-style: none;
-	background-color: transparent;
-	color: black;
-}
-
-.input-cont > input {
-	margin-right: 0.5rem;
-}
-
-.input-cont > input:focus {
-	border: none;
-	box-shadow: none;
-}
-
-.input-cont > button:focus {
-	border: none;
-	box-shadow: none;
-}
-
-.input-cont > button:hover {
-	background-color: rgb(241, 241, 241);
-	color: black;
 }
 
 @media only screen and (min-width: 992px) {

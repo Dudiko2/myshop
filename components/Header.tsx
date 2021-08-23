@@ -2,6 +2,7 @@ import { Navbar, Nav, Form, FormControl, Button } from "react-bootstrap";
 import { FC, useState, useEffect } from "react";
 import Link from "next/link";
 import styles from "../styles/Header.module.css";
+import InputContainer from "../wrappers/InputContainer";
 
 // NOTE: Revise links
 
@@ -48,10 +49,10 @@ const Header: FC = () => {
 					</Nav.Item>
 				</Nav>
 				<Form inline>
-					<div className={`input-cont`}>
+					<InputContainer>
 						<FormControl type="text" placeholder="Search" />
 						<Button>B</Button>
-					</div>
+					</InputContainer>
 				</Form>
 			</div>
 			<Navbar.Toggle className={styles.toggleButton} onClick={toggleMenu} />

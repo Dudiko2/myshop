@@ -8,6 +8,7 @@ import {
 	Row,
 } from "react-bootstrap";
 import Link from "next/link";
+import InputContainer from "../wrappers/InputContainer";
 import styles from "../styles/Footer.module.css";
 
 const Footer: FC = () => {
@@ -24,10 +25,10 @@ const Footer: FC = () => {
 								Impedit, nihil?
 							</p>
 							<Form inline>
-								<div className={`input-cont ${styles.mailContainer}`}>
+								<InputContainer className={styles.mailContainer}>
 									<FormControl type="email" placeholder="example@mail.com" />
 									<Button>M</Button>
-								</div>
+								</InputContainer>
 							</Form>
 						</div>
 					</Col>
