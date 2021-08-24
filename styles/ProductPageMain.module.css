@@ -1,21 +1,26 @@
 .mainRow {
-	align-items: stretch;
+	align-items: center;
 	justify-content: center;
+	flex-direction: column;
 	overflow: hidden;
+}
+
+.mainRow > * {
+	margin: 0.2rem 0;
 }
 
 .productDetails {
 	height: 100%;
 }
 
+.productDetails h1 {
+	font-size: 2rem;
+}
+
 .box {
 	background-color: white;
 	padding: 2rem;
 	border: var(--box-border);
-}
-
-.productDetails p {
-	padding: 0 1rem;
 }
 
 .desc {
@@ -28,6 +33,18 @@
 	justify-content: flex-start;
 	align-items: center;
 	margin: 1rem 0;
+}
+
+.buttons > * {
+	margin: 0 0.25rem;
+}
+
+.buttons :first-child {
+	margin-left: 0;
+}
+
+.buttons:last-child {
+	margin-right: 0;
 }
 
 .atc {
@@ -51,4 +68,15 @@
 .atc:active {
 	background-color: rgb(19, 19, 19) !important;
 	border-color: initial !important;
+}
+
+@media only screen and (min-width: 992px) {
+	.mainRow {
+		flex-direction: row;
+		align-items: flex-start;
+	}
+
+	.mainRow > * {
+		margin: 0;
+	}
 }
