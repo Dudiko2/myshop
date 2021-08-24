@@ -5,12 +5,14 @@ const client = Client.buildClient({
 	storefrontAccessToken: process.env.STOREFRONT_TOKEN || "",
 });
 
+type RequestFunction<T> = (...args: any[]) => Promise<T>;
 // helper function, move it
 const normalizeResponse =
-	(f: any) =>
-	async (...args: any) => {
-		const res = await f(...args);
-		return JSON.parse(JSON.stringify(res));
+	<T>(f: RequestFunction<T>) =>
+	async (...fargs: any[]) => {
+		const res = await f(...fargs);
+		const normalizedRes: T = JSON.parse(JSON.stringify(res));
+		return normalizedRes;
 	};
 
 export const fetchProducts = normalizeResponse(async (num?: number) => {

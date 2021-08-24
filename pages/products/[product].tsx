@@ -1,21 +1,20 @@
 import { GetStaticPaths, GetStaticProps } from "next";
 import { FC, useState } from "react";
+import { Container } from "react-bootstrap";
 import Head from "next/head";
-import Image from "next/image";
 import Layout from "../../wrappers/Layout";
-import Breadcrumbs, { Crumb } from "../../components/Breadcrumbs";
-import { fetchProductByHandle, fetchProducts } from "../../services/shopify";
-import { Col, Container, Row } from "react-bootstrap";
-import ProductPageMain from "../../components/ProductPageMain";
 import Section from "../../wrappers/Section";
+import Breadcrumbs, { Crumb } from "../../components/Breadcrumbs";
+import ProductPageMain from "../../components/ProductPageMain";
+import { fetchProductByHandle, fetchProducts } from "../../services/shopify";
 
 interface ProductProps {
-	product: any;
+	product: ShopifyBuy.Product;
 }
 
 const Product: FC<ProductProps> = ({ product }) => {
 	const [selectedVariant, setSelectedVariant] = useState(product.variants[0]);
-	const variants: Array<any> = product.variants;
+	const variants = product.variants;
 	const crumbs: Crumb[] = [
 		{
 			pageName: "Home",
@@ -29,9 +28,6 @@ const Product: FC<ProductProps> = ({ product }) => {
 		},
 	];
 
-	// console
-	console.log(product);
-
 	return (
 		<Layout>
 			<Head>
@@ -43,13 +39,10 @@ const Product: FC<ProductProps> = ({ product }) => {
 
 			<Section>
 				<ProductPageMain
+					selectedVariant={selectedVariant}
 					title={product.title}
 					description={product.description}
-					imgSrc={selectedVariant.image.src}
-					imgAlt={selectedVariant.image.altText}
 					variants={variants}
-					price={selectedVariant.price}
-					currency={selectedVariant.priceV2.currencyCode}
 				/>
 			</Section>
 		</Layout>

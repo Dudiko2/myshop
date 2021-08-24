@@ -1,28 +1,29 @@
 import { FC } from "react";
 import { Container, Row, Col, Button } from "react-bootstrap";
 import Image from "next/image";
-import styles from "../styles/ProductPageMain.module.css";
 import InputSelect from "./InputSelect";
+import { useCart } from "../contexts/Cart";
+import styles from "../styles/ProductPageMain.module.css";
 
 interface ProductPageMainProps {
+	selectedVariant: ShopifyBuy.ProductVariant;
 	title: string;
 	description: string;
-	imgSrc?: string;
-	imgAlt?: string;
-	price?: number | string;
-	currency?: string;
-	variants?: any[];
+	variants?: ShopifyBuy.ProductVariant[];
 }
 
 const ProductPageMain: FC<ProductPageMainProps> = ({
+	selectedVariant,
 	title,
 	description,
-	imgSrc = "",
-	imgAlt,
-	price,
-	currency,
 	variants,
 }) => {
+	const cart = useCart();
+	// @ts-ignore
+	const altText = selectedVariant.image.altText;
+	// @ts-ignore
+	const currencyCode = selectedVariant.priceV2.currencyCode;
+
 	return (
 		<Container>
 			<Row className={styles.mainRow}>
@@ -30,8 +31,8 @@ const ProductPageMain: FC<ProductPageMainProps> = ({
 					<div className={styles.box}>
 						<Image
 							layout="responsive"
-							src={imgSrc}
-							alt={imgAlt || "product variant"}
+							src={selectedVariant.image.src}
+							alt={altText || "product variant"}
 							height="560"
 							width="635"
 						/>
@@ -42,7 +43,7 @@ const ProductPageMain: FC<ProductPageMainProps> = ({
 						<Row>
 							<Col>
 								<h1>{title}</h1>
-								<span>{`${currency} ${price}`}</span>
+								<span>{`${currencyCode} ${selectedVariant.price}`}</span>
 							</Col>
 						</Row>
 						<p className={styles.desc}>{description}</p>
@@ -61,7 +62,9 @@ const ProductPageMain: FC<ProductPageMainProps> = ({
 									})}
 								</InputSelect>
 							)}
-							<AddToCartButton />
+							<AddToCartButton
+								onClick={() => cart.addToCart(selectedVariant.id, 1)}
+							/>
 						</div>
 					</Container>
 				</Col>
@@ -70,8 +73,16 @@ const ProductPageMain: FC<ProductPageMainProps> = ({
 	);
 };
 
-const AddToCartButton = () => {
-	return <Button className={styles.atc}>add to cart</Button>;
+interface ButtonProps {
+	onClick?: (arg: any) => any;
+}
+
+const AddToCartButton: FC<ButtonProps> = ({ onClick }) => {
+	return (
+		<Button onClick={onClick} className={styles.atc}>
+			add to cart
+		</Button>
+	);
 };
 
 export default ProductPageMain;
