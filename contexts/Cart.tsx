@@ -10,10 +10,7 @@ export interface Cart {
 	addToCart: (id: string | number, quantity: number) => void;
 }
 
-const cartContext = createContext({
-	items: [],
-	addToCart: (id: string | number, quantity: number) => {},
-} as Cart);
+const cartContext = createContext({} as Cart);
 cartContext.displayName = "Cart";
 
 export const CartProvider: FC = ({ children }) => {

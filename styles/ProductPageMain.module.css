@@ -57,16 +57,17 @@
 }
 
 .atc:hover,
-.atc:focus {
-	background-color: rgb(19, 19, 19);
+.atc:focus,
+.atc:active:focus {
+	background-color: black;
 	border-color: initial;
-	border: 2px solid black;
-	box-shadow: initial;
+	border: 2px solid black !important;
+	box-shadow: initial !important;
 	-webkit-box-shadow: initial;
 }
 
 .atc:active {
-	background-color: rgb(19, 19, 19) !important;
+	background-color: rgb(32, 32, 32) !important;
 	border-color: initial !important;
 }
 
