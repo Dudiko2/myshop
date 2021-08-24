@@ -5,20 +5,24 @@ const client = Client.buildClient({
 	storefrontAccessToken: process.env.STOREFRONT_TOKEN || "",
 });
 
-const fetchProducts = async (num?: number) => {
-	const res = await client.product.fetchAll(num);
-	return normalizeResponse(res);
-};
+// helper function, move it
+const normalizeResponse =
+	(f: any) =>
+	async (...args: any) => {
+		const res = await f(...args);
+		return JSON.parse(JSON.stringify(res));
+	};
 
-const fetchProductByHandle = async (handle: string) => {
-	const res = await client.product.fetchByHandle(handle);
-	return normalizeResponse(res);
-};
+export const fetchProducts = normalizeResponse(async (num?: number) => {
+	return await client.product.fetchAll(num);
+});
 
-// helper function
-const normalizeResponse = (res: any) => {
-	return JSON.parse(JSON.stringify(res));
-};
+export const fetchProductByHandle = normalizeResponse(
+	async (handle: string) => {
+		return await client.product.fetchByHandle(handle);
+	}
+);
 
-export { fetchProducts, fetchProductByHandle };
-export default client;
+const shopifyClient = { fetchProducts, fetchProductByHandle };
+
+export default shopifyClient;
