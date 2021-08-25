@@ -1,5 +1,5 @@
 import Head from "next/head";
-import LayoutHero from "../wrappers/LayoutHero";
+import Layout from "../wrappers/Layout";
 import ItemGallery from "../components/ItemGallery";
 import { fetchProducts } from "../services/shopify";
 import { FC } from "react";
@@ -10,13 +10,13 @@ interface HomeProps {
 
 const Home: FC<HomeProps> = ({ products }) => {
 	return (
-		<LayoutHero>
+		<Layout showHero>
 			<Head>
 				<title>MYSHOP </title>
 				<link rel="icon" href="/favicon.ico" />
 			</Head>
 			<ItemGallery products={products} />
-		</LayoutHero>
+		</Layout>
 	);
 };
 
