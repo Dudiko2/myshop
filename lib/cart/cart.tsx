@@ -1,8 +1,19 @@
-import { FC, useState } from "react";
-import cartContext from "../contexts/Cart";
-import type { CartItem } from "../types/cart";
+import { FC, createContext, useState, useContext } from "react";
 
-const CartProvider: FC = ({ children }) => {
+export interface CartItem {
+	id: string | number;
+	quantity: number;
+}
+
+export interface Cart {
+	items: CartItem[];
+	addToCart: (id: string | number, quantity: number) => void;
+}
+
+const cartContext = createContext({} as Cart);
+cartContext.displayName = "Cart";
+
+export const CartProvider: FC = ({ children }) => {
 	const [items, setItems] = useState<CartItem[]>([]);
 
 	const addToCart = (id: string | number, quantity: number) => {
@@ -48,4 +59,6 @@ const findCartItemById = (items: CartItem[], id: string | number) => {
 	return items.find((i) => i.id === id);
 };
 
-export default CartProvider;
+export const useCart = () => {
+	return useContext(cartContext);
+};
