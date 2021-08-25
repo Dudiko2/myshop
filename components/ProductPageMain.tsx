@@ -2,7 +2,7 @@ import { FC } from "react";
 import { Container, Row, Col, Button } from "react-bootstrap";
 import Image from "next/image";
 import InputSelect from "./InputSelect";
-import { useCart } from "../contexts/Cart";
+import useCart from "../hooks/useCart";
 import styles from "../styles/ProductPageMain.module.css";
 
 interface ProductPageMainProps {
