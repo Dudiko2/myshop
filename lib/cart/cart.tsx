@@ -8,6 +8,8 @@ export interface CartItem {
 export interface Cart {
 	items: CartItem[];
 	addToCart: (id: string | number, quantity: number) => void;
+	clearCart: () => void;
+	size: () => number;
 }
 
 const cartContext = createContext({} as Cart);
@@ -33,16 +35,19 @@ export const CartProvider: FC = ({ children }) => {
 		setItems([]);
 	};
 
+	const size = () => {
+		return amountInCart(items);
+	};
+
 	const value = {
 		items,
 		addToCart,
 		clearCart,
+		size,
 	};
 
 	return <cartContext.Provider value={value}>{children}</cartContext.Provider>;
 };
-
-//--------move?------------------
 
 const copyCartItems = (items: CartItem[]) => {
 	const copy: CartItem[] = [];
@@ -57,6 +62,14 @@ const copyCartItems = (items: CartItem[]) => {
 
 const findCartItemById = (items: CartItem[], id: string | number) => {
 	return items.find((i) => i.id === id);
+};
+
+const amountInCart = (items: CartItem[]) => {
+	const sum = items.reduce((total, item) => {
+		return total + item.quantity;
+	}, 0);
+
+	return sum;
 };
 
 export const useCart = () => {

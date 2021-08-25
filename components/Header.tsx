@@ -1,14 +1,17 @@
 import { Navbar, Nav, Form, FormControl, Button } from "react-bootstrap";
 import { FC, useState, useEffect } from "react";
 import Link from "next/link";
-import styles from "../styles/Header.module.css";
 import InputContainer from "../wrappers/InputContainer";
+import styles from "../styles/Header.module.css";
+import IconBag from "./IconBag";
+import { useCart } from "../lib/cart/cart";
 
 // NOTE: Revise links
 
 const Header: FC = () => {
 	const [isOpen, setIsOpen] = useState(false);
 	const [isScrolled, setIsScrolled] = useState(false);
+	const cart = useCart();
 
 	useEffect(() => {
 		const handleScroll = () => {
@@ -55,6 +58,7 @@ const Header: FC = () => {
 					</InputContainer>
 				</Form>
 			</div>
+			<IconBag height={"1.6rem"} amountInBag={cart.size()} />
 			<Navbar.Toggle className={styles.toggleButton} onClick={toggleMenu} />
 		</Navbar>
 	);
