@@ -1,11 +1,20 @@
 import { FC } from "react";
 import { Button, Col, Container, Row } from "react-bootstrap";
 import Link from "next/link";
+import Image from "next/image";
 import styles from "../styles/Hero.module.css";
 
 const Hero: FC = () => {
 	return (
 		<Container fluid className={styles.Hero}>
+			<Image
+				className={styles.bg}
+				src="/images/hero-image.jpg"
+				alt="hero background image"
+				layout="fill"
+				objectFit="cover"
+				objectPosition="center"
+			/>
 			<Container>
 				<Row>
 					<Col lg={8}>

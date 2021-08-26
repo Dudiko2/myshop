@@ -7,6 +7,9 @@
 
 .Hero .content {
 	font-size: 22px;
+	color: var(--c-light);
+	background-color: rgba(0, 0, 0, 0.932);
+	padding: 1rem 2rem 0 2rem;
 }
 
 .Hero .heading {
@@ -18,6 +21,10 @@
 	margin: 2rem 0;
 	padding: 0.8rem 2rem;
 	border-radius: 1px;
+}
+
+.bg {
+	z-index: 0;
 }
 
 @media only screen and (min-width: 992px) {

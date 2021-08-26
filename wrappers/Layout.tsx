@@ -13,7 +13,7 @@ interface Props {
 const Layout: FC<Props> = ({ children, showHero = false }) => {
 	return (
 		<div className={styles.Layout}>
-			<Header />
+			<Header withHero={showHero} />
 			{showHero && <Hero />}
 			<main>{children}</main>
 			<Footer />

@@ -8,7 +8,11 @@ import { useCart } from "../lib/cart/cart";
 
 // NOTE: Revise links
 
-const Header: FC = () => {
+interface Props {
+	withHero: boolean;
+}
+
+const Header: FC<Props> = ({ withHero }) => {
 	const [isOpen, setIsOpen] = useState(false);
 	const [isScrolled, setIsScrolled] = useState(false);
 	const cart = useCart();
@@ -35,7 +39,9 @@ const Header: FC = () => {
 	return (
 		<Navbar
 			expand="lg"
-			className={`${styles.Navbar} ${isScrolled ? styles.scrolled : ""}`}
+			className={`${styles.Navbar} ${isScrolled ? styles.scrolled : ""} ${
+				withHero ? styles.withHero : ""
+			}`}
 		>
 			<Link passHref href="/">
 				<Navbar.Brand>MYSHOP</Navbar.Brand>
@@ -58,7 +64,11 @@ const Header: FC = () => {
 					</InputContainer>
 				</Form>
 			</div>
-			<IconBag height={"1.6rem"} amountInBag={cart.size()} />
+			<IconBag
+				className={styles.bagIcon}
+				height={"1.6rem"}
+				amountInBag={cart.size()}
+			/>
 			<Navbar.Toggle className={styles.toggleButton} onClick={toggleMenu} />
 		</Navbar>
 	);
