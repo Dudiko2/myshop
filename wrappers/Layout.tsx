@@ -2,6 +2,7 @@ import { FC, ReactNode } from "react";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
 import Hero from "../components/Hero";
+import ButtonGithub from "../components/ButtonGithub";
 import styles from "../styles/Layout.module.css";
 
 interface Props {
@@ -16,6 +17,7 @@ const Layout: FC<Props> = ({ children, showHero = false }) => {
 			{showHero && <Hero />}
 			<main>{children}</main>
 			<Footer />
+			<ButtonGithub />
 		</div>
 	);
 };
