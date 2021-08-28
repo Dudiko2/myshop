@@ -14,6 +14,7 @@ const Hero: FC = () => {
 				layout="fill"
 				objectFit="cover"
 				objectPosition="center"
+				priority={true}
 			/>
 			<Container>
 				<Row>

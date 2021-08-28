@@ -13,9 +13,10 @@
 	margin-right: 0.5rem;
 }
 
-.Container > input:focus {
+.Container > input[type="text"]:focus {
 	border: none;
 	box-shadow: none;
+	background-color: transparent;
 }
 
 .Container > button:focus {
