@@ -2,10 +2,15 @@ import Image from "next/image";
 import Link from "next/link";
 import { FC } from "react";
 import { Col, Container, Row } from "react-bootstrap";
+import type { ShopifyProduct } from "../services/shopify";
 import styles from "../styles/ItemGallery.module.css";
 
 interface GalleryProps {
-	products: any[];
+	products: ShopifyProduct[];
+}
+
+interface ItemProps {
+	product: ShopifyProduct;
 }
 
 const ItemGallery: FC<GalleryProps> = ({ products }) => {
@@ -22,28 +27,27 @@ const ItemGallery: FC<GalleryProps> = ({ products }) => {
 	);
 };
 
-const Item = ({ product }: any) => {
+const Item = ({ product }: ItemProps) => {
 	const { title, images, handle } = product;
 	const path = `/products/${handle}`;
+	const firstVariant = product.variants[0];
 
 	return (
 		<Col>
 			<Link href={path}>
 				<a>
 					<div className={styles.card}>
-						<div className={styles.imagecont}>
-							<Image
-								layout="responsive"
-								alt="product"
-								src={images[0].src}
-								height="560"
-								width="635"
-							/>
-						</div>
+						<Image
+							layout="responsive"
+							alt="product"
+							src={images[0].src}
+							height="560"
+							width="635"
+						/>
 
 						<div className={styles.cardbody}>
-							{title}
-							{/* <span className={styles.price}>19.99</span> */}
+							<div className={styles.cardtitle}>{title}</div>
+							<div className={styles.price}>{firstVariant.price}</div>
 						</div>
 					</div>
 				</a>

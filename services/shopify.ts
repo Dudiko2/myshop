@@ -1,5 +1,8 @@
 import Client from "shopify-buy";
 
+/* Extended type since the original is lacking */
+export type ShopifyProduct = ShopifyBuy.Product & { handle: string };
+
 const client = Client.buildClient({
 	domain: process.env.STOREFRONT_DOMAIN || "",
 	storefrontAccessToken: process.env.STOREFRONT_TOKEN || "",

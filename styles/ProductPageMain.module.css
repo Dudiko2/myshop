@@ -30,13 +30,14 @@
 
 .buttons {
 	display: flex;
+	flex-direction: column;
 	justify-content: flex-start;
 	align-items: center;
 	margin: 1rem 0;
 }
 
 .buttons > * {
-	margin: 0 0.25rem;
+	margin: 0.25rem 0;
 }
 
 .buttons :first-child {
@@ -79,5 +80,13 @@
 
 	.mainRow > * {
 		margin: 0;
+	}
+
+	.buttons {
+		flex-direction: row;
+	}
+
+	.buttons > * {
+		margin: 0 0.25rem;
 	}
 }

@@ -52,6 +52,7 @@ const IconBag: FC<Props> = ({
 							color: white;
 							border-radius: 100%;
 							font-size: 60%;
+							font-weight: bold;
 						}
 					`}</style>
 				</div>

@@ -4,6 +4,10 @@
 	justify-content: center;
 	font-family: var(--mont);
 	margin: 1rem;
+	background-color: white;
+	padding: 1rem;
+	border: var(--std-border);
+	border-radius: 1em;
 }
 
 .imagecont {
@@ -12,7 +16,10 @@
 
 .cardbody {
 	padding: 1rem 0.5rem;
-	background-color: antiquewhite;
+}
+
+.cardtitle {
+	font-weight: bold;
 }
 
 .price {

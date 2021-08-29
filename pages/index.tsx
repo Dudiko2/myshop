@@ -3,12 +3,15 @@ import Layout from "../wrappers/Layout";
 import ItemGallery from "../components/ItemGallery";
 import { fetchProducts } from "../services/shopify";
 import { FC } from "react";
+import type { ShopifyProduct } from "../services/shopify";
 
 interface HomeProps {
-	products: any[];
+	products: ShopifyProduct[];
 }
 
 const Home: FC<HomeProps> = ({ products }) => {
+	console.log(products[0]);
+
 	return (
 		<Layout showHero>
 			<Head>

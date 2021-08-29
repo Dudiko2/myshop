@@ -44,7 +44,7 @@ const Header: FC<Props> = ({ withHero }) => {
 			}`}
 		>
 			<Link passHref href="/">
-				<Navbar.Brand>MYSHOP</Navbar.Brand>
+				<Navbar.Brand className={styles.Brand}>MYSHOP</Navbar.Brand>
 			</Link>
 			<div className={`${styles.collapseable} ${isOpen ? styles.show : ""}`}>
 				<Nav className={`${styles.Navlinks} capitalize`}>
@@ -57,19 +57,15 @@ const Header: FC<Props> = ({ withHero }) => {
 						<Nav.Link>about</Nav.Link>
 					</Nav.Item>
 				</Nav>
-				<Form inline>
-					<InputContainer>
-						<FormControl type="text" placeholder="Search" />
-						<Button>B</Button>
-					</InputContainer>
-				</Form>
 			</div>
-			<IconBag
-				className={styles.bagIcon}
-				height={"1.6rem"}
-				amountInBag={cart.size()}
-			/>
-			<Navbar.Toggle className={styles.toggleButton} onClick={toggleMenu} />
+			<div className={styles.buttonGroup}>
+				<IconBag
+					className={styles.bagIcon}
+					height={"1.6rem"}
+					amountInBag={cart.size()}
+				/>
+				<Navbar.Toggle className={styles.toggleButton} onClick={toggleMenu} />
+			</div>
 		</Navbar>
 	);
 };
