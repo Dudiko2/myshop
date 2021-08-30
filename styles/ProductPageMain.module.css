@@ -3,6 +3,11 @@
 	justify-content: center;
 	flex-direction: column;
 	overflow: hidden;
+	border: var(--std-border);
+	border-radius: 1em;
+	border-top-width: 0.4rem;
+	background-color: white;
+	margin: 0;
 }
 
 .mainRow > * {
@@ -18,9 +23,7 @@
 }
 
 .box {
-	background-color: white;
 	padding: 2rem;
-	border: var(--box-border);
 }
 
 .desc {

@@ -7,6 +7,7 @@ import styles from "../styles/ProductPageMain.module.css";
 
 interface ProductPageMainProps {
 	selectedVariant: ShopifyBuy.ProductVariant;
+	setVariant: (id: string | number) => void;
 	title: string;
 	description: string;
 	variants?: ShopifyBuy.ProductVariant[];
@@ -14,6 +15,7 @@ interface ProductPageMainProps {
 
 const ProductPageMain: FC<ProductPageMainProps> = ({
 	selectedVariant,
+	setVariant,
 	title,
 	description,
 	variants,
@@ -50,13 +52,13 @@ const ProductPageMain: FC<ProductPageMainProps> = ({
 
 						<div className={styles.buttons}>
 							{variants && (
-								<InputSelect>
+								<InputSelect onInput={(e) => setVariant(e.target.value)}>
 									{variants.map((v) => {
 										return (
 											<InputSelect.Option
 												key={v.id}
 												text={v.title}
-												value={v.title}
+												value={v.id}
 											/>
 										);
 									})}

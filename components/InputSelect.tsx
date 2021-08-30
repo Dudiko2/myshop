@@ -1,16 +1,24 @@
-import { FC } from "react";
+import { FC, FormEventHandler } from "react";
 import styles from "../styles/InputSelect.module.css";
 
-interface SelectComponent extends FC {
+interface SelectProps {
+	onInput: (e: any) => void;
+}
+
+interface SelectComponent<P = {}> extends FC<P> {
 	Option: FC<OptionProps>;
 }
 
 interface OptionProps {
-	value: string;
+	value: string | number;
 	text: string;
 }
-const InputSelect: SelectComponent = ({ children }) => {
-	return <select className={styles.inputSelect}>{children}</select>;
+const InputSelect: SelectComponent<SelectProps> = ({ children, onInput }) => {
+	return (
+		<select onInput={onInput} className={styles.inputSelect}>
+			{children}
+		</select>
+	);
 };
 
 const Option: FC<OptionProps> = ({ value, text }) => {

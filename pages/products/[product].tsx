@@ -10,23 +10,18 @@ import { fetchProductByHandle, fetchProducts } from "../../services/shopify";
 
 interface ProductProps {
 	product: ShopifyBuy.Product;
+	breadcrumbs: Crumb[];
 }
 
-const Product: FC<ProductProps> = ({ product }) => {
+const Product: FC<ProductProps> = ({ product, breadcrumbs }) => {
 	const [selectedVariant, setSelectedVariant] = useState(product.variants[0]);
 	const variants = product.variants;
-	const crumbs: Crumb[] = [
-		{
-			pageName: "Home",
-			path: "/",
-		},
-		{
-			pageName: "Products",
-		},
-		{
-			pageName: product.title,
-		},
-	];
+
+	const setVariantById = (id: string | number) => {
+		const wantedVariant = variants.find((v) => v.id === id);
+
+		if (wantedVariant) setSelectedVariant(wantedVariant);
+	};
 
 	return (
 		<Layout>
@@ -34,12 +29,13 @@ const Product: FC<ProductProps> = ({ product }) => {
 				<title>MYSHOP - {product.title}</title>
 			</Head>
 			<Container fluid="sm">
-				<Breadcrumbs crumbs={crumbs} />
+				<Breadcrumbs crumbs={breadcrumbs} />
 			</Container>
 
 			<Section>
 				<ProductPageMain
 					selectedVariant={selectedVariant}
+					setVariant={setVariantById}
 					title={product.title}
 					description={product.description}
 					variants={variants}
@@ -64,9 +60,22 @@ export const getStaticPaths: GetStaticPaths = async () => {
 
 export const getStaticProps: GetStaticProps = async ({ params }: any) => {
 	const product = await fetchProductByHandle(params.product);
+	const breadcrumbs: Crumb[] = [
+		{
+			pageName: "Home",
+			path: "/",
+		},
+		{
+			pageName: "Products",
+			path: "/products/",
+		},
+		{
+			pageName: product.title,
+		},
+	];
 
 	return {
-		props: { product },
+		props: { product, breadcrumbs },
 		revalidate: 60,
 	};
 };

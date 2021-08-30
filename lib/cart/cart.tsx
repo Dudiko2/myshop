@@ -8,10 +8,12 @@ export interface CartItem {
 export interface Cart {
 	items: CartItem[];
 	addToCart: (id: string | number, quantity: number) => void;
+	removeFromCart: (id: string | number, quantity: number) => void;
 	clearCart: () => void;
 	size: () => number;
 }
 
+// --------------------------------------------------
 const cartContext = createContext({} as Cart);
 cartContext.displayName = "Cart";
 
@@ -31,6 +33,22 @@ export const CartProvider: FC = ({ children }) => {
 		setItems(copy);
 	};
 
+	const removeFromCart = (id: string | number, quantity: number) => {
+		const itemIndex = items.findIndex((i) => i.id === id);
+		let copy: CartItem[];
+
+		if (itemIndex === -1 || quantity <= 0) return;
+
+		copy = copyCartItems(items);
+		if (copy[itemIndex].quantity <= quantity) {
+			copy.splice(itemIndex, 1);
+		} else {
+			copy[itemIndex].quantity -= quantity;
+		}
+
+		setItems(copy);
+	};
+
 	const clearCart = () => {
 		setItems([]);
 	};
@@ -42,6 +60,7 @@ export const CartProvider: FC = ({ children }) => {
 	const value = {
 		items,
 		addToCart,
+		removeFromCart,
 		clearCart,
 		size,
 	};
@@ -49,16 +68,13 @@ export const CartProvider: FC = ({ children }) => {
 	return <cartContext.Provider value={value}>{children}</cartContext.Provider>;
 };
 
-const copyCartItems = (items: CartItem[]) => {
-	const copy: CartItem[] = [];
+// ----------------------------------------------------
+const copyCartItems = (items: CartItem[]) =>
+	items.map((i) => {
+		const item: CartItem = { ...i };
 
-	for (let i = 0; i < items.length; i++) {
-		const item: CartItem = { ...items[i] };
-		copy.push(item);
-	}
-
-	return copy;
-};
+		return item;
+	});
 
 const findCartItemById = (items: CartItem[], id: string | number) => {
 	return items.find((i) => i.id === id);
@@ -72,6 +88,7 @@ const amountInCart = (items: CartItem[]) => {
 	return sum;
 };
 
+// -----------------------------------------------
 export const useCart = () => {
 	return useContext(cartContext);
 };
