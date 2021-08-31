@@ -21,6 +21,8 @@ export const CartProvider: FC = ({ children }) => {
 	const [items, setItems] = useState<CartItem[]>([]);
 
 	const addToCart = (id: string | number, quantity: number) => {
+		if (quantity <= 0) return;
+
 		const copy = copyCartItems(items);
 		const item = findCartItemById(copy, id);
 

@@ -1,4 +1,4 @@
-import { FC } from "react";
+import { FC, useState } from "react";
 import { Container, Row, Col, Button } from "react-bootstrap";
 import Image from "next/image";
 import InputSelect from "./InputSelect";
@@ -21,10 +21,13 @@ const ProductPageMain: FC<ProductPageMainProps> = ({
 	variants,
 }) => {
 	const cart = useCart();
+	const [amountToAdd, setAmountToAdd] = useState("1");
 	// @ts-ignore
 	const altText = selectedVariant.image.altText;
 	// @ts-ignore
 	const currencyCode = selectedVariant.priceV2.currencyCode;
+	const price = selectedVariant.price;
+	const originalPrice = selectedVariant.compareAtPrice;
 
 	return (
 		<Container>
@@ -42,12 +45,9 @@ const ProductPageMain: FC<ProductPageMainProps> = ({
 				</Col>
 				<Col>
 					<Container className={`${styles.productDetails} ${styles.box}`}>
-						<Row>
-							<Col>
-								<h1>{title}</h1>
-								<span>{`${currencyCode} ${selectedVariant.price}`}</span>
-							</Col>
-						</Row>
+						<h1>{title}</h1>
+						<span>{`${currencyCode} ${price} `}</span>
+						{originalPrice && <del>{`${originalPrice}`}</del>}
 						<p className={styles.desc}>{description}</p>
 
 						<div className={styles.buttons}>
@@ -65,7 +65,11 @@ const ProductPageMain: FC<ProductPageMainProps> = ({
 								</InputSelect>
 							)}
 							<AddToCartButton
-								onClick={() => cart.addToCart(selectedVariant.id, 1)}
+								onClick={() =>
+									cart.addToCart(selectedVariant.id, parseInt(amountToAdd))
+								}
+								amount={amountToAdd}
+								onAmountChange={setAmountToAdd}
 							/>
 						</div>
 					</Container>
@@ -77,13 +81,31 @@ const ProductPageMain: FC<ProductPageMainProps> = ({
 
 interface ButtonProps {
 	onClick?: (arg: any) => any;
+	amount: string;
+	onAmountChange: any;
 }
 
-const AddToCartButton: FC<ButtonProps> = ({ onClick }) => {
+const AddToCartButton: FC<ButtonProps> = ({
+	onClick,
+	amount,
+	onAmountChange,
+}) => {
 	return (
-		<Button onClick={onClick} className={styles.atc}>
-			add to cart
-		</Button>
+		<div className={styles.atcGroup}>
+			<Button onClick={onClick} className={styles.atc}>
+				add to cart
+			</Button>
+			<input
+				className={styles.amount}
+				type="number"
+				name="amount"
+				min="1"
+				max="100"
+				step="1"
+				value={amount}
+				onInput={(e) => onAmountChange((e.target as HTMLInputElement).value)}
+			/>
+		</div>
 	);
 };
 
