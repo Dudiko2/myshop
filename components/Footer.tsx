@@ -74,7 +74,7 @@ const Footer: FC = () => {
 				</Row>
 
 				{/* copyright and legals */}
-				<Row>
+				<Row className={styles.bottom}>
 					<Col md={12} lg={6} className={styles.copy}>
 						<p>&copy; 2021 MYSHOP</p>
 					</Col>

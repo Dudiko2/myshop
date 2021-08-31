@@ -19,7 +19,7 @@ const Header: FC<Props> = ({ withHero }) => {
 
 	useEffect(() => {
 		const handleScroll = () => {
-			if (window.scrollY > 50) {
+			if (window.scrollY > 20) {
 				if (!isScrolled) setIsScrolled(true);
 			} else {
 				if (isScrolled) setIsScrolled(false);

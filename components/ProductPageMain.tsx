@@ -46,10 +46,12 @@ const ProductPageMain: FC<ProductPageMainProps> = ({
 				<Col>
 					<Container className={`${styles.productDetails} ${styles.box}`}>
 						<h1>{title}</h1>
-						<span>{`${currencyCode} ${price} `}</span>
-						{originalPrice && <del>{`${originalPrice}`}</del>}
+						<Price
+							currencyCode={currencyCode}
+							currentPrice={price}
+							compareAtPrice={originalPrice}
+						/>
 						<p className={styles.desc}>{description}</p>
-
 						<div className={styles.buttons}>
 							{variants && (
 								<InputSelect onInput={(e) => setVariant(e.target.value)}>
@@ -105,6 +107,26 @@ const AddToCartButton: FC<ButtonProps> = ({
 				value={amount}
 				onInput={(e) => onAmountChange((e.target as HTMLInputElement).value)}
 			/>
+		</div>
+	);
+};
+
+interface PriceProps {
+	currencyCode: string;
+	currentPrice: string | number;
+	compareAtPrice?: string | number;
+}
+
+const Price: FC<PriceProps> = ({
+	currencyCode,
+	currentPrice,
+	compareAtPrice,
+}) => {
+	return (
+		<div className={styles.Price}>
+			{currencyCode}
+			<span> {currentPrice} </span>
+			{compareAtPrice && <del>{compareAtPrice}</del>}
 		</div>
 	);
 };

@@ -19,7 +19,7 @@
 }
 
 .productDetails h1 {
-	font-size: 2rem;
+	font-size: 1.6rem;
 }
 
 .box {
@@ -90,7 +90,18 @@ button.atc {
 	margin-left: 0.2rem;
 }
 
-@media only screen and (min-width: 992px) {
+.Price {
+	font-size: 1.2rem;
+	margin-bottom: 1rem;
+	font-weight: bold;
+}
+
+.Price del {
+	font-size: 1rem;
+	color: var(--gray);
+}
+
+@media only screen and (min-width: 768px) {
 	.mainRow {
 		flex-direction: row;
 		align-items: flex-start;

@@ -28,9 +28,7 @@ const Product: FC<ProductProps> = ({ product, breadcrumbs }) => {
 			<Head>
 				<title>MYSHOP - {product.title}</title>
 			</Head>
-			<Container fluid="sm">
-				<Breadcrumbs crumbs={breadcrumbs} />
-			</Container>
+			<Breadcrumbs crumbs={breadcrumbs} />
 
 			<Section>
 				<ProductPageMain

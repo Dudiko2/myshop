@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { FC } from "react";
-import { Breadcrumb } from "react-bootstrap";
+import { Breadcrumb, Container } from "react-bootstrap";
 import styles from "../styles/Breadcrumbs.module.css";
 
 export interface Crumb {
@@ -24,7 +24,13 @@ const Breadcrumbs: FC<Props> = ({ crumbs }) => {
 		</Link>
 	));
 
-	return <Breadcrumb className={styles.Breadcrumbs}>{items}</Breadcrumb>;
+	return (
+		<Container fluid className={styles.wrapper}>
+			<Container>
+				<Breadcrumb className={styles.Breadcrumbs}>{items}</Breadcrumb>
+			</Container>
+		</Container>
+	);
 };
 
 export default Breadcrumbs;

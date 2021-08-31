@@ -1,9 +1,14 @@
-.Breadcrumbs {
+.wrapper {
 	display: none;
+}
+
+.Breadcrumbs {
+	font-size: 0.8rem;
 }
 
 .Breadcrumbs > ol {
 	background-color: transparent;
+	margin: 0;
 }
 
 .Breadcrumbs,
@@ -16,7 +21,7 @@
 }
 
 @media only screen and (min-width: 992px) {
-	.Breadcrumbs {
-		display: initial;
+	.wrapper {
+		display: block;
 	}
 }
