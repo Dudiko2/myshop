@@ -1,5 +1,5 @@
 import { Navbar, Nav, Form, FormControl, Button } from "react-bootstrap";
-import { FC, useState, useEffect } from "react";
+import { FC, useState, useEffect, CSSProperties } from "react";
 import Link from "next/link";
 import InputContainer from "../wrappers/InputContainer";
 import styles from "../styles/Header.module.css";
@@ -58,6 +58,7 @@ const Header: FC<Props> = ({ withHero }) => {
 					</Nav.Item>
 				</Nav>
 			</div>
+			<Backdrop show={isOpen} closeFunc={() => setIsOpen(false)} />
 			<div className={styles.buttonGroup}>
 				<IconBag
 					className={styles.bagIcon}
@@ -67,6 +68,29 @@ const Header: FC<Props> = ({ withHero }) => {
 				<Navbar.Toggle className={styles.toggleButton} onClick={toggleMenu} />
 			</div>
 		</Navbar>
+	);
+};
+
+interface BackdropProps {
+	show: boolean;
+	zIndex?: number;
+	closeFunc: any;
+}
+
+const Backdrop: FC<BackdropProps> = ({ show, zIndex = 0, closeFunc }) => {
+	const display = show ? "block" : "none";
+	const styleObj: CSSProperties = {
+		position: "fixed",
+		top: "0",
+		left: "0",
+		right: "0",
+		bottom: "0",
+		backgroundColor: "black",
+		opacity: 0.1,
+	};
+
+	return (
+		<div onClick={closeFunc} style={{ display, zIndex, ...styleObj }}></div>
 	);
 };
 

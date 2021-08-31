@@ -68,10 +68,11 @@ button.atc {
 
 .atc:hover,
 .atc:focus,
-.atc:active:focus {
+.atc:active:focus,
+.atc:disabled {
 	background-color: black;
 	border-color: initial;
-	border: 2px solid black !important;
+	border: 3px solid black !important;
 	box-shadow: initial !important;
 	-webkit-box-shadow: initial;
 }
@@ -99,6 +100,11 @@ button.atc {
 .Price del {
 	font-size: 1rem;
 	color: var(--gray);
+}
+
+.unavailable {
+	font-weight: bold;
+	color: var(--red);
 }
 
 @media only screen and (min-width: 768px) {

@@ -28,6 +28,7 @@ const ProductPageMain: FC<ProductPageMainProps> = ({
 	const currencyCode = selectedVariant.priceV2.currencyCode;
 	const price = selectedVariant.price;
 	const originalPrice = selectedVariant.compareAtPrice;
+	const available = selectedVariant.available;
 
 	return (
 		<Container>
@@ -72,7 +73,13 @@ const ProductPageMain: FC<ProductPageMainProps> = ({
 								}
 								amount={amountToAdd}
 								onAmountChange={setAmountToAdd}
+								disabled={!available}
 							/>
+							{!available && (
+								<div className={styles.unavailable}>
+									Variant currently unavailable
+								</div>
+							)}
 						</div>
 					</Container>
 				</Col>
@@ -85,16 +92,18 @@ interface ButtonProps {
 	onClick?: (arg: any) => any;
 	amount: string;
 	onAmountChange: any;
+	disabled: boolean;
 }
 
 const AddToCartButton: FC<ButtonProps> = ({
 	onClick,
 	amount,
 	onAmountChange,
+	disabled,
 }) => {
 	return (
 		<div className={styles.atcGroup}>
-			<Button onClick={onClick} className={styles.atc}>
+			<Button disabled={disabled} onClick={onClick} className={styles.atc}>
 				add to cart
 			</Button>
 			<input
