@@ -3,6 +3,7 @@ import Header from "../components/Header";
 import Footer from "../components/Footer";
 import Hero from "../components/Hero";
 import ButtonGithub from "../components/ButtonGithub";
+import Breadcrumbs from "../components/Breadcrumbs";
 import styles from "../styles/Layout.module.css";
 
 interface Props {
@@ -15,7 +16,10 @@ const Layout: FC<Props> = ({ children, showHero = false }) => {
 		<div className={styles.Layout}>
 			<Header withHero={showHero} />
 			{showHero && <Hero />}
-			<main>{children}</main>
+			<main>
+				<Breadcrumbs />
+				{children}
+			</main>
 			<Footer />
 			<ButtonGithub />
 		</div>
