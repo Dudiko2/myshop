@@ -47,12 +47,17 @@ export const getStaticPaths: GetStaticPaths = async () => {
 
 	return {
 		paths,
-		fallback: false,
+		fallback: "blocking",
 	};
 };
 
 export const getStaticProps: GetStaticProps = async ({ params }: any) => {
 	const product = await fetchProductByHandle(params.product);
+
+	if (!product)
+		return {
+			notFound: true,
+		};
 
 	return {
 		props: { product },
