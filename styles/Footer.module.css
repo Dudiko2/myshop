@@ -66,11 +66,11 @@
 		margin: 0 0.4rem;
 	}
 
-	.companyLink {
+	.footerLink {
 		color: var(--gray);
 	}
 
-	.companyLink:hover {
+	.footerLink:hover {
 		color: var(--c-dark);
 		text-decoration: underline;
 	}

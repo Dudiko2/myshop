@@ -55,7 +55,11 @@ const ProductPageMain: FC<ProductPageMainProps> = ({
 						<p className={styles.desc}>{description}</p>
 						<div className={styles.buttons}>
 							{variants && (
-								<InputSelect onInput={(e) => setVariant(e.target.value)}>
+								<InputSelect
+									id="variants"
+									label="Variants"
+									onInput={(e) => setVariant(e.target.value)}
+								>
 									{variants.map((v) => {
 										return (
 											<InputSelect.Option

@@ -3,6 +3,8 @@ import styles from "../styles/InputSelect.module.css";
 
 interface SelectProps {
 	onInput: (e: any) => void;
+	id?: string;
+	label?: string;
 }
 
 interface SelectComponent<P = {}> extends FC<P> {
@@ -13,11 +15,23 @@ interface OptionProps {
 	value: string | number;
 	text: string;
 }
-const InputSelect: SelectComponent<SelectProps> = ({ children, onInput }) => {
+const InputSelect: SelectComponent<SelectProps> = ({
+	children,
+	onInput,
+	id,
+	label,
+}) => {
 	return (
-		<select onInput={onInput} className={styles.inputSelect}>
-			{children}
-		</select>
+		<div className={styles.wrapper}>
+			{id && label && (
+				<label className={styles.label} htmlFor={id}>
+					{label}
+				</label>
+			)}
+			<select id={id} onInput={onInput} className={styles.inputSelect}>
+				{children}
+			</select>
+		</div>
 	);
 };
 

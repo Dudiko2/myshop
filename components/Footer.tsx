@@ -47,13 +47,19 @@ const Footer: FC = () => {
 					<Col md={12} lg={6}>
 						<ul className={`${styles.legalLinks} capitalize`}>
 							<li>
-								<Link href="/">terms & conditions</Link>
+								<Link href="/">
+									<a className={styles.footerLink}>terms & conditions</a>
+								</Link>
 							</li>
 							<li>
-								<Link href="/">privacy policy</Link>
+								<Link href="/">
+									<a className={styles.footerLink}>privacy policy</a>
+								</Link>
 							</li>
 							<li>
-								<Link href="/">accessibility</Link>
+								<Link href="/">
+									<a className={styles.footerLink}>accessibility</a>
+								</Link>
 							</li>
 						</ul>
 					</Col>
@@ -78,9 +84,9 @@ const genFooterSections = () => {
 				<ul>
 					{s.links.map((l, i) => (
 						<li key={l + i}>
-							<a className={styles.companyLink} href="/">
-								{l}
-							</a>
+							<Link href="/">
+								<a className={styles.footerLink}>{l}</a>
+							</Link>
 						</li>
 					))}
 				</ul>
