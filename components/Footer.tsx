@@ -35,41 +35,7 @@ const Footer: FC = () => {
 
 					{/* company links */}
 					<Col lg={12} xl={8}>
-						<Row>
-							<Col md={12} lg={4}>
-								<div>
-									<h5 className={styles.sectionHeading}>Shop</h5>
-									<ul>
-										<li>brr</li>
-										<li>trr</li>
-										<li>trr</li>
-										<li>brr</li>
-									</ul>
-								</div>
-							</Col>
-							<Col md={12} lg={4}>
-								<div>
-									<h5 className={styles.sectionHeading}>Shop</h5>
-									<ul>
-										<li>brr</li>
-										<li>trr</li>
-										<li>trr</li>
-										<li>brr</li>
-									</ul>
-								</div>
-							</Col>
-							<Col>
-								<div>
-									<h5 className={styles.sectionHeading}>Shop</h5>
-									<ul>
-										<li>brr</li>
-										<li>trr</li>
-										<li>trr</li>
-										<li>brr</li>
-									</ul>
-								</div>
-							</Col>
-						</Row>
+						<Row>{genFooterSections()}</Row>
 					</Col>
 				</Row>
 
@@ -95,6 +61,34 @@ const Footer: FC = () => {
 			</Container>
 		</Container>
 	);
+};
+
+// generate dummy data
+const genFooterSections = () => {
+	const sections = [
+		{ title: "Shop", links: ["For Women", "For Men", "Blog"] },
+		{ title: "Company", links: ["About", "Careers"] },
+		{ title: "Your Account", links: ["Orders", "Wishlist"] },
+	];
+
+	const out = sections.map((s, index) => (
+		<Col md={12} lg={4} key={s.title}>
+			<div>
+				<h5 className={styles.sectionHeading}>{s.title}</h5>
+				<ul>
+					{s.links.map((l, i) => (
+						<li key={l + i}>
+							<a className={styles.companyLink} href="/">
+								{l}
+							</a>
+						</li>
+					))}
+				</ul>
+			</div>
+		</Col>
+	));
+
+	return out;
 };
 
 export default Footer;

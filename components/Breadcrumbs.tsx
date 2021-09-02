@@ -16,8 +16,6 @@ interface Props {
 const Breadcrumbs: FC = () => {
 	const crumbs = useBreadcrumbs();
 
-	console.log(crumbs);
-
 	if (crumbs.length <= 1) return null;
 
 	const items = crumbs.map((c, index) => (

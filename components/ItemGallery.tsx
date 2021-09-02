@@ -37,13 +37,15 @@ const Item = ({ product }: ItemProps) => {
 			<Link href={path}>
 				<a>
 					<div className={styles.card}>
-						<Image
-							layout="responsive"
-							alt="product"
-							src={images[0].src}
-							height="560"
-							width="635"
-						/>
+						<div>
+							<Image
+								layout="responsive"
+								alt="product"
+								src={images[0].src}
+								height="560"
+								width="635"
+							/>
+						</div>
 
 						<div className={styles.cardbody}>
 							<div className={styles.cardtitle}>{title}</div>

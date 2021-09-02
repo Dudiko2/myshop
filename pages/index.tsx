@@ -4,21 +4,22 @@ import ItemGallery from "../components/ItemGallery";
 import { fetchProducts } from "../services/shopify";
 import { FC } from "react";
 import type { ShopifyProduct } from "../services/shopify";
+import Section from "../wrappers/Section";
 
 interface HomeProps {
 	products: ShopifyProduct[];
 }
 
 const Home: FC<HomeProps> = ({ products }) => {
-	console.log(products[0]);
-
 	return (
 		<Layout showHero>
 			<Head>
 				<title>MYSHOP </title>
 				<link rel="icon" href="/favicon.ico" />
 			</Head>
-			<ItemGallery products={products} />
+			<Section title="Our Products">
+				<ItemGallery products={products} />
+			</Section>
 		</Layout>
 	);
 };
