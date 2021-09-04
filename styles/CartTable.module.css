@@ -20,9 +20,9 @@
 }
 
 .itemImage {
-	position: "relative";
-	height: "100%";
-	width: "100%";
+	position: relative;
+	height: 100%;
+	width: 100%;
 	border: var(--std-border);
 	border-radius: 1rem;
 	overflow: hidden;
