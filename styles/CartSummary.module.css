@@ -1,0 +1,41 @@
+.summary {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: flex-start;
+	overflow: hidden;
+	padding: 0 1rem;
+}
+
+.summaryTitle {
+	padding: 0.8rem;
+	width: 100%;
+	text-align: center;
+	border-bottom: var(--std-border);
+}
+
+.summaryTitle h6 {
+	margin: 0;
+}
+
+.summaryBody {
+	min-height: 50px;
+	width: 100%;
+}
+
+.bodyPair {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	padding: 1rem;
+	font-weight: bold;
+}
+
+.bodyPair .value {
+	color: gray;
+}
+
+.total .value {
+	color: var(--c-dark);
+	font-size: 1.4rem;
+}

@@ -5,6 +5,7 @@ import { fetchProducts } from "../services/shopify";
 import { FC } from "react";
 import type { ShopifyProduct } from "../services/shopify";
 import Section from "../wrappers/Section";
+import { GetStaticProps } from "next";
 
 interface HomeProps {
 	products: ShopifyProduct[];
@@ -24,13 +25,13 @@ const Home: FC<HomeProps> = ({ products }) => {
 	);
 };
 
-export const getStaticProps = async () => {
-	const products = await fetchProducts(9);
+export const getStaticProps: GetStaticProps = async () => {
+	const products = (await fetchProducts(9)) as ShopifyProduct[];
+	const props: HomeProps = { products };
 
 	return {
-		props: {
-			products,
-		},
+		props,
+		revalidate: 60,
 	};
 };
 

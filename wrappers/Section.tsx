@@ -9,7 +9,7 @@ interface Props {
 const Section: FC<Props> = ({ title, children }) => {
 	return (
 		<Container fluid className={styles.section}>
-			{title && <h2>{title}</h2>}
+			{title && <h2 className={styles.title}>{title}</h2>}
 			{children}
 		</Container>
 	);

@@ -1,13 +1,13 @@
 import { FC, createContext, useState, useContext } from "react";
 
-export interface CartItem {
-	id: string | number;
+export interface CartItem extends ShopifyBuy.ProductVariant {
+	parentTitle: string;
 	quantity: number;
 }
 
 export interface Cart {
 	items: CartItem[];
-	addToCart: (id: string | number, quantity: number) => void;
+	addToCart: (newItem: CartItem, quantity: number) => void;
 	removeFromCart: (id: string | number, quantity: number) => void;
 	clearCart: () => void;
 	size: () => number;
@@ -20,16 +20,17 @@ cartContext.displayName = "Cart";
 export const CartProvider: FC = ({ children }) => {
 	const [items, setItems] = useState<CartItem[]>([]);
 
-	const addToCart = (id: string | number, quantity: number) => {
+	const addToCart = (newItem: CartItem, quantity: number) => {
 		if (quantity <= 0) return;
 
 		const copy = copyCartItems(items);
-		const item = findCartItemById(copy, id);
+		const item = findCartItemById(copy, newItem.id);
 
 		if (item) {
 			item.quantity += quantity;
 		} else {
-			copy.push({ id, quantity });
+			newItem.quantity = quantity;
+			copy.push(newItem);
 		}
 
 		setItems(copy);
@@ -91,6 +92,6 @@ const amountInCart = (items: CartItem[]) => {
 };
 
 // -----------------------------------------------
-export const useCart = () => {
+export const useCart = (): Cart => {
 	return useContext(cartContext);
 };

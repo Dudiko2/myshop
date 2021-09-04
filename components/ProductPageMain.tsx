@@ -2,7 +2,7 @@ import { FC, useState } from "react";
 import { Container, Row, Col, Button } from "react-bootstrap";
 import Image from "next/image";
 import InputSelect from "./InputSelect";
-import { useCart } from "../lib/cart/cart";
+import { CartItem, useCart } from "../lib/cart/cart";
 import styles from "../styles/ProductPageMain.module.css";
 
 interface ProductPageMainProps {
@@ -29,6 +29,11 @@ const ProductPageMain: FC<ProductPageMainProps> = ({
 	const price = selectedVariant.price;
 	const originalPrice = selectedVariant.compareAtPrice;
 	const available = selectedVariant.available;
+	const itemToAdd: CartItem = {
+		parentTitle: title,
+		...selectedVariant,
+		quantity: 0,
+	};
 
 	return (
 		<Container>
@@ -72,9 +77,7 @@ const ProductPageMain: FC<ProductPageMainProps> = ({
 								</InputSelect>
 							)}
 							<AddToCartButton
-								onClick={() =>
-									cart.addToCart(selectedVariant.id, parseInt(amountToAdd))
-								}
+								onClick={() => cart.addToCart(itemToAdd, parseInt(amountToAdd))}
 								amount={amountToAdd}
 								onAmountChange={setAmountToAdd}
 								disabled={!available}

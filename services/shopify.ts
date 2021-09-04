@@ -9,7 +9,8 @@ const client = Client.buildClient({
 });
 
 type RequestFunction<T> = (...args: any[]) => Promise<T>;
-// helper function, move it
+
+// helper function, wrap requests with it
 const normalizeResponse =
 	<T>(f: RequestFunction<T>) =>
 	async (...fargs: any[]) => {

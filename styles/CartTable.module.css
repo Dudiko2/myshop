@@ -1,0 +1,64 @@
+.table {
+	margin-bottom: 1rem;
+	overflow: hidden;
+}
+
+.title {
+	padding: 1rem;
+	border-bottom: var(--std-border);
+}
+
+.title h6 {
+	margin: 0;
+}
+
+.item {
+	display: grid;
+	grid-template-columns: 20% auto 10% 10% 5%;
+	width: 100%;
+	padding: 1rem;
+}
+
+.itemImage {
+	position: "relative";
+	height: "100%";
+	width: "100%";
+	border: var(--std-border);
+	border-radius: 1rem;
+	overflow: hidden;
+}
+
+.itemTitle {
+	font-weight: bold;
+	padding: 0 1rem;
+}
+
+.empty {
+	font-weight: bold;
+	padding: 2rem;
+}
+
+@media only screen and (min-width: 992px) {
+	.table {
+		margin: 0;
+	}
+
+	.body {
+		max-height: 48vh;
+		overflow-y: auto;
+		margin-bottom: 1rem;
+	}
+
+	.body::-webkit-scrollbar {
+		width: 4px;
+	}
+
+	.body::-webkit-scrollbar-thumb {
+		background: var(--c-dark);
+		border-radius: 5px;
+	}
+
+	.body::-webkit-scrollbar-track {
+		background-color: var(--c-light);
+	}
+}

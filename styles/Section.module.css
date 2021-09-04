@@ -8,3 +8,7 @@
 	align-items: center;
 	justify-content: flex-start;
 }
+
+.title {
+	margin: 1rem 0 2rem 0;
+}
