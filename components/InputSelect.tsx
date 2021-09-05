@@ -1,4 +1,4 @@
-import { FC, FormEventHandler } from "react";
+import { FC } from "react";
 import styles from "../styles/InputSelect.module.css";
 
 interface SelectProps {

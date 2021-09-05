@@ -1,10 +1,9 @@
-import { Navbar, Nav, Form, FormControl, Button } from "react-bootstrap";
+import { Navbar, Nav } from "react-bootstrap";
 import { FC, useState, useEffect, CSSProperties } from "react";
 import Link from "next/link";
-import InputContainer from "../wrappers/InputContainer";
 import styles from "../styles/Header.module.css";
 import IconBag from "./IconBag";
-import { useCart } from "../lib/cart/cart";
+import { useCart } from "../lib/cart/index";
 
 // NOTE: Revise links
 
@@ -63,7 +62,7 @@ const Header: FC<Props> = ({ withHero }) => {
 				<IconBag
 					className={styles.bagIcon}
 					height={"1.6rem"}
-					amountInBag={cart.size()}
+					amountInBag={cart.size}
 				/>
 				<Navbar.Toggle className={styles.toggleButton} onClick={toggleMenu} />
 			</div>

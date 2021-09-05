@@ -3,6 +3,7 @@
 	height: 95vh;
 	display: flex;
 	align-items: center;
+	background-color: var(--c-dark);
 }
 
 .Hero .content {
