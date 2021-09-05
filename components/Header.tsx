@@ -1,4 +1,4 @@
-import { Navbar, Nav } from "react-bootstrap";
+import { Navbar, Nav, Container } from "react-bootstrap";
 import { FC, useState, useEffect, CSSProperties } from "react";
 import Link from "next/link";
 import styles from "../styles/Header.module.css";
@@ -42,30 +42,32 @@ const Header: FC<Props> = ({ withHero }) => {
 				withHero ? styles.withHero : ""
 			}`}
 		>
-			<Link passHref href="/">
-				<Navbar.Brand className={styles.Brand}>MYSHOP</Navbar.Brand>
-			</Link>
-			<div className={`${styles.collapseable} ${isOpen ? styles.show : ""}`}>
-				<Nav className={`${styles.Navlinks} capitalize`}>
-					<Nav.Item>
-						<Link passHref href="/">
-							<Nav.Link>collections</Nav.Link>
-						</Link>
-					</Nav.Item>
-					<Nav.Item>
-						<Nav.Link>about</Nav.Link>
-					</Nav.Item>
-				</Nav>
-			</div>
-			<Backdrop show={isOpen} closeFunc={() => setIsOpen(false)} />
-			<div className={styles.buttonGroup}>
-				<IconBag
-					className={styles.bagIcon}
-					height={"1.6rem"}
-					amountInBag={cart.size}
-				/>
-				<Navbar.Toggle className={styles.toggleButton} onClick={toggleMenu} />
-			</div>
+			<Container>
+				<Link passHref href="/">
+					<Navbar.Brand className={styles.Brand}>MYSHOP</Navbar.Brand>
+				</Link>
+				<div className={`${styles.collapseable} ${isOpen ? styles.show : ""}`}>
+					<Nav className={`${styles.Navlinks} capitalize`}>
+						<Nav.Item>
+							<Link passHref href="/">
+								<Nav.Link>collections</Nav.Link>
+							</Link>
+						</Nav.Item>
+						<Nav.Item>
+							<Nav.Link>about</Nav.Link>
+						</Nav.Item>
+					</Nav>
+				</div>
+				<Backdrop show={isOpen} closeFunc={() => setIsOpen(false)} />
+				<div className={styles.buttonGroup}>
+					<IconBag
+						className={styles.bagIcon}
+						height={"1.6rem"}
+						amountInBag={cart.size}
+					/>
+					<Navbar.Toggle className={styles.toggleButton} onClick={toggleMenu} />
+				</div>
+			</Container>
 		</Navbar>
 	);
 };

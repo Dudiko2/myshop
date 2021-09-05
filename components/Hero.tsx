@@ -7,35 +7,28 @@ import styles from "../styles/Hero.module.css";
 const Hero: FC = () => {
 	return (
 		<Container fluid className={styles.Hero}>
-			<Image
-				className={styles.bg}
-				src="/images/hero-image.jpg"
-				alt="hero background image"
-				layout="fill"
-				objectFit="cover"
-				objectPosition="center"
-				priority={true}
-			/>
-			<Container>
-				<Row>
-					<Col lg={8}>
-						<div className={styles.content}>
-							<span className={`uppercase`}>subtitle</span>
-							<h1 className={`capitalize ${styles.heading}`}>
-								for every occassion
-							</h1>
-							<p>
-								Lorem ipsum dolor sit amet consectetur adipisicing elit. Atque
-								nemo aut repudiandae!
-							</p>
-							<Link href="/" passHref>
-								<Button className={`uppercase ${styles.button}`}>
-									shop now
-								</Button>
-							</Link>
-						</div>
-					</Col>
-				</Row>
+			<Container className={styles.innerHero}>
+				<div className={styles.content}>
+					<h1 className={`capitalize ${styles.heading}`}>for every occasion</h1>
+					<p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+					<Link href="/" passHref>
+						<Button
+							id={styles.heroButton}
+							className={`uppercase ${styles.button}`}
+						>
+							shop now
+						</Button>
+					</Link>
+				</div>
+				<div className={styles.image}>
+					<Image
+						alt="shoes"
+						src="/images/hero-shoes.png"
+						layout="responsive"
+						height={600}
+						width={1000}
+					/>
+				</div>
 			</Container>
 		</Container>
 	);

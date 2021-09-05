@@ -7,6 +7,11 @@
 	transition: all 200ms linear;
 	background-color: white;
 	border-bottom: 1px solid rgb(212, 212, 212);
+	letter-spacing: 0.2rem;
+}
+
+.Navbar a {
+	font-family: var(--mont);
 }
 
 .collapseable {
@@ -16,7 +21,7 @@
 	position: fixed;
 	top: 0;
 	left: 0;
-	z-index: inherit;
+	z-index: 100;
 	background-color: white;
 	padding: 2rem;
 	height: 100vh;
@@ -47,6 +52,12 @@
 
 .Brand {
 	font-size: 1rem;
+	font-weight: bold;
+	font-family: var(--mont);
+}
+
+.Brand:hover {
+	font-family: var(--mont);
 }
 
 .buttonGroup {
@@ -68,8 +79,13 @@
 		border: none;
 	}
 
-	.Navbar.withHero a {
-		color: white !important;
+	.Navbar a {
+		font-size: 0.8rem;
+		margin-right: 1rem;
+	}
+
+	.Brand {
+		margin-right: 2rem;
 	}
 
 	.collapseable {
@@ -95,7 +111,7 @@
 	}
 
 	.withHero .bagIcon {
-		fill: white;
+		fill: var(--c-dark);
 	}
 
 	.withHero.scrolled .bagIcon {
