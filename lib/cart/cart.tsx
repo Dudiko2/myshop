@@ -1,5 +1,5 @@
 import { Dispatch } from "react";
-import { amountInCart } from "./utils";
+import { amountInCart, totalCost } from "./utils";
 import type { Cart, CartItem, Action } from "./types";
 
 /**
@@ -21,6 +21,10 @@ export const initCart = (
 			dispatch({ type: "REMOVE_FROM_CART", payload: { id, quantity } }),
 
 		clearCart: () => dispatch({ type: "CLEAR_CART", payload: {} }),
+
+		get total() {
+			return totalCost(items);
+		},
 
 		get size() {
 			return amountInCart(items);

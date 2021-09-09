@@ -8,6 +8,7 @@ export interface Cart {
 	addToCart: (newItem: CartItem, quantity: number) => void;
 	removeFromCart: (id: string | number, quantity: number) => void;
 	clearCart: () => void;
+	total: number;
 	size: number;
 }
 

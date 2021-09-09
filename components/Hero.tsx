@@ -12,10 +12,7 @@ const Hero: FC = () => {
 					<h1 className={`capitalize ${styles.heading}`}>for every occasion</h1>
 					<p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
 					<Link href="/" passHref>
-						<Button
-							id={styles.heroButton}
-							className={`uppercase ${styles.button}`}
-						>
+						<Button id={styles.heroButton} className={`uppercase`}>
 							shop now
 						</Button>
 					</Link>

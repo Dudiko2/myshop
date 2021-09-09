@@ -18,3 +18,11 @@ export const amountInCart = (items: CartItem[]) => {
 
 	return sum;
 };
+
+export const totalCost = (items: CartItem[]) => {
+	return items.reduce((total, current) => {
+		const cost = current.quantity * parseFloat(current.price);
+
+		return total + cost;
+	}, 0);
+};

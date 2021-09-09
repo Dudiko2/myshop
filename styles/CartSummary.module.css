@@ -39,3 +39,37 @@
 	color: var(--c-dark);
 	font-size: 1.4rem;
 }
+
+#btn {
+	letter-spacing: 2px;
+	padding: 0.8rem 2rem;
+	border-radius: 2px;
+	border: none;
+	background-color: var(--c-dark);
+	font-family: var(--mont);
+	font-weight: bold;
+}
+
+#btn:hover,
+#btn:active {
+	font-weight: bold;
+	border: none;
+	background-color: var(--c-dark-hover);
+	font-family: var(--mont);
+}
+
+#btn:active {
+	transform: scale(0.98);
+}
+
+#btn:focus {
+	box-shadow: none;
+}
+
+.btnWrap {
+	display: flex;
+	justify-content: center;
+	padding: 1rem;
+	border-top: var(--std-border);
+	width: 100%;
+}
