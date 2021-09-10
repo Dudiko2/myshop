@@ -41,8 +41,6 @@ export const getServerSideProps: GetServerSideProps = async ({ query }) => {
 			? query.querystring[0]
 			: (query.querystring as string);
 
-	console.log(querystring);
-
 	const products = await fetchProductsAndSortBy({
 		queryString: querystring || "",
 		sortKey: "TITLE",

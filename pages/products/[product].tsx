@@ -40,6 +40,7 @@ const Product: FC<ProductProps> = ({ product }) => {
 
 export const getStaticPaths: GetStaticPaths = async () => {
 	const products = await fetchProducts({ num: 100 });
+	// console.log(products[0]);
 
 	const paths = products.map((p: any) => ({
 		params: { product: `${p.handle}` },
@@ -52,7 +53,8 @@ export const getStaticPaths: GetStaticPaths = async () => {
 };
 
 export const getStaticProps: GetStaticProps = async ({ params }: any) => {
-	const product = await fetchProductByHandle(params.product);
+	console.log(params);
+	const product = await fetchProductByHandle({ handle: params.product });
 
 	if (!product)
 		return {
