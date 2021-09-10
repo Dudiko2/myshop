@@ -39,7 +39,7 @@ const Product: FC<ProductProps> = ({ product }) => {
 };
 
 export const getStaticPaths: GetStaticPaths = async () => {
-	const products = await fetchProducts(100);
+	const products = await fetchProducts({ num: 100 });
 
 	const paths = products.map((p: any) => ({
 		params: { product: `${p.handle}` },

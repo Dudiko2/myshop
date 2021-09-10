@@ -8,27 +8,48 @@ const client = Client.buildClient({
 	storefrontAccessToken: process.env.STOREFRONT_TOKEN || "",
 });
 
-type RequestFunction<T> = (...args: any[]) => Promise<T>;
+type RequestFunction<P, T> = (args: P) => Promise<T>;
 
 // helper function, wrap requests with it
 const normalizeResponse =
-	<T>(f: RequestFunction<T>) =>
-	async (...fargs: any[]) => {
-		const res = await f(...fargs);
+	<P, T>(f: RequestFunction<P, T>) =>
+	async (args: P) => {
+		const res = await f(args);
 		const normalizedRes: T = JSON.parse(JSON.stringify(res));
 		return normalizedRes;
 	};
 
-export const fetchProducts = normalizeResponse(async (num?: number) => {
-	return await client.product.fetchAll(num);
-});
-
-export const fetchProductByHandle = normalizeResponse(
-	async (handle: string) => {
-		return await client.product.fetchByHandle(handle);
+export const fetchProducts = normalizeResponse(
+	async (params: { num?: number }) => {
+		return await client.product.fetchAll(params.num);
 	}
 );
 
-const shopifyClient = { fetchProducts, fetchProductByHandle };
+export const fetchProductByHandle = normalizeResponse(
+	async (params: { handle: string }) => {
+		return await client.product.fetchByHandle(params.handle);
+	}
+);
+
+export const fetchProductsAndSortBy = normalizeResponse(
+	async (params: {
+		queryString: string;
+		sortKey: string;
+		reverse?: boolean;
+	}) => {
+		return await client.product.fetchQuery({
+			query: params.queryString,
+			// @ts-ignore stupid typedef is wrong
+			sortKey: params.sortKey,
+			reverse: params.reverse,
+		});
+	}
+);
+
+const shopifyClient = {
+	fetchProducts,
+	fetchProductByHandle,
+	fetchProductsAndSortBy,
+};
 
 export default shopifyClient;

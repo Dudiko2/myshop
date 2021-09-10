@@ -4,6 +4,7 @@ import Link from "next/link";
 import styles from "../styles/Header.module.css";
 import IconBag from "./IconBag";
 import { useCart } from "../lib/cart/index";
+import SearchBar from "./SearchBar";
 
 // NOTE: Revise links
 
@@ -57,8 +58,8 @@ const Header: FC<Props> = ({ withHero }) => {
 							<Nav.Link>about</Nav.Link>
 						</Nav.Item>
 					</Nav>
+					<SearchBar />
 				</div>
-				<Backdrop show={isOpen} closeFunc={() => setIsOpen(false)} />
 				<div className={styles.buttonGroup}>
 					<IconBag
 						className={styles.bagIcon}
@@ -67,6 +68,7 @@ const Header: FC<Props> = ({ withHero }) => {
 					/>
 					<Navbar.Toggle className={styles.toggleButton} onClick={toggleMenu} />
 				</div>
+				<Backdrop show={isOpen} closeFunc={() => setIsOpen(false)} />
 			</Container>
 		</Navbar>
 	);

@@ -1,0 +1,24 @@
+.SearchBar {
+	background: var(--c-light-gray);
+	border: none;
+	border-radius: 3px;
+	padding: 0.2rem 1rem;
+}
+
+@media only screen and (min-width: 992px) {
+	.form {
+		width: 50%;
+		display: flex;
+		justify-content: flex-end;
+	}
+
+	.SearchBar {
+		width: 50%;
+		transition: width 100ms ease-in;
+	}
+
+	.form > .SearchBar:focus {
+		width: 100%;
+		border: var(--std-border);
+	}
+}
