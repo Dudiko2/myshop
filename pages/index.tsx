@@ -26,7 +26,7 @@ const Home: FC<HomeProps> = ({ products }) => {
 };
 
 export const getStaticProps: GetStaticProps = async () => {
-	const products = (await fetchProducts(9)) as ShopifyProduct[];
+	const products = (await fetchProducts({ num: 9 })) as ShopifyProduct[];
 	const props: HomeProps = { products };
 
 	return {
