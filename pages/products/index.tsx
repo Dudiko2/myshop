@@ -3,6 +3,7 @@ import { GetServerSideProps } from "next";
 import { FC } from "react";
 import { fetchProductsAndSortBy, ShopifyProduct } from "../../services/shopify";
 import Layout from "../../wrappers/Layout";
+import ItemGallery from "../../components/ItemGallery";
 
 interface Props {
 	products: ShopifyProduct[];
@@ -14,33 +15,18 @@ const Products: FC<Props> = ({ products }) => {
 			<Head>
 				<title>Products</title>
 			</Head>
-			<div
-				style={{
-					display: "flex",
-					flexDirection: "column",
-					alignItems: "center",
-				}}
-			>
-				{products.map((p) => (
-					<div style={{ padding: ".2rem 0" }} key={p.id}>
-						{p.title}
-						<strong>{p.selectedVariant}</strong>
-					</div>
-				))}
-			</div>
+			<ItemGallery products={products} />
 		</Layout>
 	);
 };
 
 export const getServerSideProps: GetServerSideProps = async ({ query }) => {
-	const querystring =
-		query?.querystring?.constructor === Array
-			? query.querystring[0]
-			: (query.querystring as string);
+	const querystring = getOneQueryParam(query?.querystring);
+	const sortKey = getOneQueryParam(query?.sortKey)?.toUpperCase();
 
 	const products = await fetchProductsAndSortBy({
 		queryString: querystring || "",
-		sortKey: "TITLE",
+		sortKey: sortKey || "TITLE",
 	});
 
 	return {
@@ -48,6 +34,12 @@ export const getServerSideProps: GetServerSideProps = async ({ query }) => {
 			products,
 		},
 	};
+};
+
+const getOneQueryParam = (param?: string | Array<string>) => {
+	if (!param) return undefined;
+
+	return param?.constructor === Array ? param[0] : (param as string);
 };
 
 export default Products;
