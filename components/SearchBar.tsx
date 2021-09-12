@@ -1,5 +1,10 @@
-import { FC } from "react";
+import { FC, useState } from "react";
 import styles from "../styles/SearchBar.module.css";
+
+export const searchKeys = {
+	QUERY: "q",
+	SORT_KEY: "sortby",
+};
 
 const SearchBar: FC = () => {
 	return (
@@ -8,7 +13,7 @@ const SearchBar: FC = () => {
 				id="searchBar"
 				className={styles.SearchBar}
 				type="text"
-				name="querystring"
+				name={searchKeys.QUERY}
 				placeholder="Search..."
 			/>
 		</form>
