@@ -40,7 +40,6 @@ interface ItemProps {
 }
 
 const CartTableItem: FC<ItemProps> = ({ item, onRemove }) => {
-	// @ts-ignore
 	const currencyCode: string = item.priceV2.currencyCode;
 
 	return (

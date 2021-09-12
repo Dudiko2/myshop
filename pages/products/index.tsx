@@ -1,11 +1,11 @@
 import Head from "next/head";
 import { GetServerSideProps } from "next";
 import { FC } from "react";
-import { fetchProductsAndSortBy } from "../../services/shopify";
+import { fetchProductsAndSortBy, ShopifyProduct } from "../../services/shopify";
 import Layout from "../../wrappers/Layout";
 
 interface Props {
-	products: ShopifyBuy.Product[];
+	products: ShopifyProduct[];
 }
 
 const Products: FC<Props> = ({ products }) => {
@@ -33,10 +33,7 @@ const Products: FC<Props> = ({ products }) => {
 };
 
 export const getServerSideProps: GetServerSideProps = async ({ query }) => {
-	let querystring: string | undefined;
-
-	// take only 1 query param
-	querystring =
+	const querystring =
 		query?.querystring?.constructor === Array
 			? query.querystring[0]
 			: (query.querystring as string);

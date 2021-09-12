@@ -6,12 +6,14 @@ export const initialState: CartItem[] = [];
 
 export const reducer: Reducer<CartItem[], Action> = (items, action) => {
 	const copy = copyCartItems(items);
+	let item: CartItem | undefined;
+	let itemIndex = -1;
 
 	switch (action.type) {
 		case "ADD_TO_CART":
 			if (action.payload.quantity <= 0) return items;
 
-			const item = findCartItemById(copy, action.payload.newItem.id);
+			item = findCartItemById(copy, action.payload.newItem.id);
 
 			if (item) {
 				item.quantity += action.payload.quantity;
@@ -23,7 +25,7 @@ export const reducer: Reducer<CartItem[], Action> = (items, action) => {
 			return copy;
 
 		case "REMOVE_FROM_CART":
-			const itemIndex = items.findIndex((i) => i.id === action.payload.id);
+			itemIndex = items.findIndex((i) => i.id === action.payload.id);
 
 			if (itemIndex === -1 || action.payload.quantity <= 0) return copy;
 

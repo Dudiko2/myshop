@@ -7,7 +7,7 @@ interface SelectProps {
 	label?: string;
 }
 
-interface SelectComponent<P = {}> extends FC<P> {
+interface SelectComponent<P = Record<string, unknown>> extends FC<P> {
 	Option: FC<OptionProps>;
 }
 

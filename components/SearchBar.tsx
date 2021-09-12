@@ -1,5 +1,4 @@
-import { useRouter } from "next/router";
-import { FC, FormEventHandler } from "react";
+import { FC } from "react";
 import styles from "../styles/SearchBar.module.css";
 
 const SearchBar: FC = () => {

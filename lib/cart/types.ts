@@ -1,6 +1,9 @@
 export interface CartItem extends ShopifyBuy.ProductVariant {
 	parentTitle: string;
 	quantity: number;
+	priceV2: {
+		currencyCode: string;
+	};
 }
 
 export interface Cart {
@@ -25,7 +28,7 @@ export interface RemoveFromCartAction {
 
 export interface ClearCartAction {
 	type: "CLEAR_CART";
-	payload: {};
+	payload: Record<string, never>;
 }
 
 export type Action = AddToCartAction | RemoveFromCartAction | ClearCartAction;

@@ -7,7 +7,10 @@ import type { CartItem } from "../lib/cart/types";
 import styles from "../styles/ProductPageMain.module.css";
 
 interface ProductPageMainProps {
-	selectedVariant: ShopifyBuy.ProductVariant;
+	selectedVariant: ShopifyBuy.ProductVariant & {
+		image: { altText?: string };
+		priceV2?: { currencyCode: string };
+	};
 	setVariant: (id: string | number) => void;
 	title: string;
 	description: string;
@@ -23,18 +26,16 @@ const ProductPageMain: FC<ProductPageMainProps> = ({
 }) => {
 	const cart = useCart();
 	const [amountToAdd, setAmountToAdd] = useState("1");
-	// @ts-ignore
 	const altText = selectedVariant.image.altText;
-	// @ts-ignore
-	const currencyCode = selectedVariant.priceV2.currencyCode;
+	const currencyCode = selectedVariant.priceV2?.currencyCode as string;
 	const price = selectedVariant.price;
 	const originalPrice = selectedVariant.compareAtPrice;
 	const available = selectedVariant.available;
-	const itemToAdd: CartItem = {
+	const itemToAdd = {
 		parentTitle: title,
 		...selectedVariant,
 		quantity: 0,
-	};
+	} as CartItem;
 
 	return (
 		<Container>
