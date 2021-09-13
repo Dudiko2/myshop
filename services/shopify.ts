@@ -3,7 +3,7 @@ import Client from "shopify-buy";
 /* Extended type since the original is lacking */
 export type ShopifyProduct = ShopifyBuy.Product & { handle: string };
 
-const client = Client.buildClient({
+export const client = Client.buildClient({
 	domain: process.env.STOREFRONT_DOMAIN || "",
 	storefrontAccessToken: process.env.STOREFRONT_TOKEN || "",
 });
@@ -39,7 +39,6 @@ export const fetchProductsAndSortBy = normalizeResponse(
 	}) => {
 		return await client.product.fetchQuery({
 			query: params.queryString,
-			// @ts-ignore stupid typedef is wrong
 			sortKey: params.sortKey,
 			reverse: params.reverse,
 		});
@@ -47,6 +46,7 @@ export const fetchProductsAndSortBy = normalizeResponse(
 );
 
 const shopifyClient = {
+	client,
 	fetchProducts,
 	fetchProductByHandle,
 	fetchProductsAndSortBy,
