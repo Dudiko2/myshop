@@ -2,6 +2,10 @@ import Client from "shopify-buy";
 
 /* Extended type since the original is lacking */
 export type ShopifyProduct = ShopifyBuy.Product & { handle: string };
+export type ShopifyQuery = ShopifyBuy.Query & {
+	sortKey: string;
+	sortBy?: string;
+};
 
 export const client = Client.buildClient({
 	domain: process.env.STOREFRONT_DOMAIN || "",
@@ -41,7 +45,7 @@ export const fetchProductsAndSortBy = normalizeResponse(
 			query: params.queryString,
 			sortKey: params.sortKey,
 			reverse: params.reverse,
-		});
+		} as ShopifyQuery);
 	}
 );
 
