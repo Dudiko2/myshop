@@ -9,10 +9,6 @@ export interface Crumb {
 	path?: string;
 }
 
-interface Props {
-	crumbs: Crumb[];
-}
-
 const Breadcrumbs: FC = () => {
 	const crumbs = useBreadcrumbs();
 

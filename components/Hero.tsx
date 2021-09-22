@@ -1,5 +1,5 @@
 import { FC } from "react";
-import { Button, Col, Container, Row } from "react-bootstrap";
+import { Button, Container } from "react-bootstrap";
 import Link from "next/link";
 import Image from "next/image";
 import styles from "../styles/Hero.module.css";
@@ -11,7 +11,7 @@ const Hero: FC = () => {
 				<div className={styles.content}>
 					<h1 className={`capitalize ${styles.heading}`}>for every occasion</h1>
 					<p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
-					<Link href="/" passHref>
+					<Link href="/products" passHref>
 						<Button id={styles.heroButton} className={`uppercase`}>
 							shop now
 						</Button>
