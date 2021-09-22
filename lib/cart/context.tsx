@@ -9,7 +9,7 @@ cartContext.displayName = "Cart";
 
 export const CartProvider: FC = ({ children }) => {
 	const [items, dispatch] = useReducer(reducer, initialState);
-	const [cart, setCart] = useState(initCart(items, dispatch));
+	const [cart, setCart] = useState(() => initCart(items, dispatch));
 
 	useEffect(() => {
 		setCart(initCart(items, dispatch));
