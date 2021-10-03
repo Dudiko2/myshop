@@ -66,17 +66,12 @@ const ProductPageMain: FC<ProductPageMainProps> = ({
 									id="variants"
 									label="Variants"
 									onInput={(e) => setVariant(e.target.value)}
-								>
-									{variants.map((v) => {
-										return (
-											<InputSelect.Option
-												key={v.id}
-												text={v.title}
-												value={v.id}
-											/>
-										);
-									})}
-								</InputSelect>
+									options={variants.map((v) => ({
+										text: v.title,
+										value: `${v.id}`,
+									}))}
+									selectedValue={`${selectedVariant.id}`}
+								/>
 							)}
 							<AddToCartButton
 								onClick={() => cart.addToCart(itemToAdd, parseInt(amountToAdd))}

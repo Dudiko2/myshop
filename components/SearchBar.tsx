@@ -1,22 +1,24 @@
-import { FC } from "react";
+import { FC, useState } from "react";
 import styles from "../styles/SearchBar.module.css";
 
-export const searchKeys = {
-	QUERY: "q",
-	SORT_KEY: "sortby",
-};
+interface Props {
+	className?: string;
+	value?: string;
+}
 
-const SearchBar: FC = () => {
+const SearchBar: FC<Props> = ({ className, value = "" }) => {
+	const [searchValue, setSearchValue] = useState(value);
+
 	return (
-		<form action="/products" className={styles.form} autoComplete="off">
-			<input
-				id="searchBar"
-				className={styles.SearchBar}
-				type="text"
-				name={searchKeys.QUERY}
-				placeholder="Search..."
-			/>
-		</form>
+		<input
+			id="searchBar"
+			className={`${styles.SearchBar} ${className}`}
+			type="text"
+			name="q"
+			placeholder="Search..."
+			value={searchValue}
+			onChange={(e) => setSearchValue(e.target.value)}
+		/>
 	);
 };
 

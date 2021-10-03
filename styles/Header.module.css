@@ -140,4 +140,20 @@
 	.withHero.scrolled .bagIcon {
 		fill: var(--c-dark);
 	}
+
+	.SearchForm {
+		width: 50%;
+		display: flex;
+		justify-content: flex-end;
+	}
+
+	.SearchBar {
+		width: 50%;
+		transition: width 100ms ease-in;
+	}
+
+	.SearchForm > .SearchBar:focus {
+		width: 100%;
+		border: var(--std-border);
+	}
 }

@@ -5,21 +5,22 @@ interface SelectProps {
 	onInput: (e: any) => void;
 	id?: string;
 	label?: string;
+	name?: string;
+	options: Array<{ text: string; value: string }>;
+	selectedValue?: string;
 }
 
 interface SelectComponent<P = Record<string, unknown>> extends FC<P> {
 	Option: FC<OptionProps>;
 }
 
-interface OptionProps {
-	value: string | number;
-	text: string;
-}
 const InputSelect: SelectComponent<SelectProps> = ({
-	children,
 	onInput,
 	id,
 	label,
+	name,
+	options,
+	selectedValue = "",
 }) => {
 	return (
 		<div className={styles.wrapper}>
@@ -28,12 +29,25 @@ const InputSelect: SelectComponent<SelectProps> = ({
 					{label}
 				</label>
 			)}
-			<select id={id} onInput={onInput} className={styles.inputSelect}>
-				{children}
+			<select
+				id={id}
+				onInput={onInput}
+				className={styles.inputSelect}
+				name={name}
+				value={selectedValue}
+			>
+				{options.map((o, i) => (
+					<Option key={`#${i}${o.value}`} value={o.value} text={o.text} />
+				))}
 			</select>
 		</div>
 	);
 };
+
+interface OptionProps {
+	value: string | number;
+	text: string;
+}
 
 const Option: FC<OptionProps> = ({ value, text }) => {
 	return <option value={value}>{text}</option>;

@@ -58,7 +58,13 @@ const Header: FC<Props> = ({ withHero }) => {
 							<Nav.Link>about</Nav.Link>
 						</Nav.Item>
 					</Nav>
-					<SearchBar />
+					<form
+						action="/products"
+						className={styles.SearchForm}
+						autoComplete="off"
+					>
+						<SearchBar className={styles.SearchBar} />
+					</form>
 				</div>
 				<div className={styles.buttonGroup}>
 					<IconBag
@@ -77,7 +83,7 @@ const Header: FC<Props> = ({ withHero }) => {
 interface BackdropProps {
 	show: boolean;
 	zIndex?: number;
-	closeFunc: any;
+	closeFunc: () => void;
 }
 
 const Backdrop: FC<BackdropProps> = ({ show, zIndex = 0, closeFunc }) => {
