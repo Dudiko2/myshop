@@ -20,7 +20,7 @@ const Hero: FC = () => {
 				<div className={styles.image}>
 					<Image
 						alt="shoes"
-						src="/images/hero-shoes.png"
+						src="/images/hero-shoes.webp"
 						layout="responsive"
 						height={600}
 						width={1000}
