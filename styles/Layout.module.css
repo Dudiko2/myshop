@@ -1,9 +1,8 @@
 .Layout {
-	/* needed for positioning the Header to the top of the page without being sticky */
-	position: relative;
-	background-color: #fafafa;
+    /* needed for positioning the Header to the top of the page without being sticky */
+    position: relative;
 }
 
 .Layout main {
-	padding: 4rem 0;
+    padding: 4rem 0;
 }

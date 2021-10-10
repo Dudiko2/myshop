@@ -1,123 +1,112 @@
 .mainRow {
-	align-items: center;
-	justify-content: center;
-	flex-direction: column;
-	overflow: hidden;
-	border: var(--std-border);
-	border-radius: 1em;
-	border-top-width: 0.4rem;
-	background-color: white;
-	margin: 0;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    overflow: hidden;
+    border: var(--std-border);
+    border-radius: 1em;
+    border-top-width: 0.4rem;
+    background-color: white;
+    margin: 0;
 }
 
 .mainRow > * {
-	margin: 0.2rem 0;
+    margin: 0.2rem 0;
 }
 
 .productDetails {
-	height: 100%;
+    height: 100%;
 }
 
 .productDetails h1 {
-	font-size: 1.6rem;
+    font-size: 1.6rem;
 }
 
 .box {
-	padding: 2rem;
+    padding: 2rem;
 }
 
 .desc {
-	font-weight: 500;
-	color: var(--gray);
+    font-weight: 500;
+    color: var(--gray);
 }
 
 .buttons {
-	display: flex;
-	flex-direction: column;
-	justify-content: flex-start;
-	align-items: center;
-	margin: 1rem 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    margin: 1rem 0;
 }
 
 .buttons > * {
-	margin: 0.4rem 0;
+    margin: 0.4rem 0;
 }
 
 .buttons :first-child {
-	margin-left: 0;
+    margin-left: 0;
 }
 
 .buttons:last-child {
-	margin-right: 0;
+    margin-right: 0;
 }
 
 .atcGroup {
-	display: flex;
-	align-items: center;
+    display: flex;
+    align-items: center;
 }
 
 button.atc {
-	background-color: black;
-	text-transform: uppercase;
-	font-weight: bold;
-	font-size: 1rem;
-	padding: 0.6rem 1.6rem;
-	border-color: initial;
-	border: 3px solid black;
+    background-color: black;
+    text-transform: uppercase;
+    font-weight: bold;
+    font-size: 1rem;
+    padding: 0.6rem 1.6rem;
+    border-color: initial;
+    border: 3px solid black;
 }
 
 .atc:hover,
 .atc:focus,
 .atc:active:focus,
 .atc:disabled {
-	background-color: black;
-	border-color: initial;
-	border: 3px solid black !important;
-	box-shadow: initial !important;
-	-webkit-box-shadow: initial;
+    background-color: black;
+    border-color: initial;
+    border: 3px solid black !important;
+    box-shadow: initial !important;
+    -webkit-box-shadow: initial;
 }
 
 .atc:active {
-	background-color: rgb(32, 32, 32) !important;
-	border-color: initial !important;
+    background-color: rgb(32, 32, 32) !important;
+    border-color: initial !important;
 }
 
 .amount {
-	font-weight: bold;
-	font-size: 1rem;
-	text-transform: uppercase;
-	padding: 0.6rem 0 0.6rem 0.3rem;
-	border: 3px solid var(--gray);
-	margin-left: 0.2rem;
-}
-
-.Price {
-	font-size: 1.2rem;
-	margin-bottom: 1rem;
-	font-weight: bold;
-}
-
-.Price del {
-	font-size: 1rem;
-	color: var(--gray);
+    font-weight: bold;
+    font-size: 1rem;
+    text-transform: uppercase;
+    padding: 0.6rem 0 0.6rem 0.3rem;
+    border: 3px solid var(--gray);
+    margin-left: 0.2rem;
 }
 
 .unavailable {
-	font-weight: bold;
-	color: var(--red);
+    font-weight: bold;
+    color: var(--red);
 }
 
 @media only screen and (min-width: 768px) {
-	.mainRow {
-		flex-direction: row;
-		align-items: flex-start;
-	}
+    .mainRow {
+        flex-direction: row;
+        align-items: flex-start;
+    }
 
-	.mainRow > * {
-		margin: 0;
-	}
+    .mainRow > * {
+        margin: 0;
+    }
 
-	.buttons {
-		align-items: flex-start;
-	}
+    .buttons {
+        align-items: flex-start;
+    }
 }

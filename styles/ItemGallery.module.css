@@ -1,27 +1,24 @@
 .card {
-	display: flex;
-	flex-direction: column;
-	justify-content: center;
-	font-family: var(--mont);
-	margin: 1rem;
-	background-color: white;
-	padding: 1rem;
-	border: var(--std-border);
-	border-radius: 1em;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    font-family: var(--mont);
+    margin: 1rem 0;
+    background-color: white;
 }
 
 .imagecont {
-	position: relative;
+    position: relative;
 }
 
 .cardbody {
-	padding: 1rem 0.5rem 0 0.5rem;
+    padding: 1rem 0.5rem 0 0.5rem;
 }
 
 .cardtitle {
-	font-weight: bold;
+    font-weight: bold;
 }
 
 .price {
-	color: gray;
+    color: gray;
 }
