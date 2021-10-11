@@ -1,159 +1,162 @@
 .Navbar {
-	align-items: center;
-	position: fixed;
-	padding: 0.5rem;
-	width: 100%;
-	z-index: 100;
-	transition: all 200ms linear;
-	background-color: white;
-	border-bottom: 1px solid rgb(212, 212, 212);
-	letter-spacing: 0.2rem;
+    align-items: center;
+    position: fixed;
+    padding: 0.5rem;
+    width: 100%;
+    z-index: 100;
+    transition: all 200ms linear;
+    background-color: white;
+    border-bottom: 1px solid rgb(212, 212, 212);
+    letter-spacing: 0.2rem;
 }
 
 .Navbar a {
-	font-family: var(--mont);
+    font-family: var(--mont);
 }
 
 .collapseable {
-	display: flex;
-	flex-direction: column;
-	align-items: flex-start;
-	position: fixed;
-	top: 0;
-	left: 0;
-	z-index: 100;
-	background-color: white;
-	padding: 2rem;
-	height: 100vh;
-	width: 80vw;
-	transform: translateX(-100%);
-	transition-duration: 200ms;
-	transition-timing-function: ease-out;
-	max-width: 80vw;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 100;
+    background-color: white;
+    padding: 2rem;
+    height: 100vh;
+    width: 80vw;
+    transform: translateX(-100%);
+    transition-duration: 200ms;
+    transition-timing-function: ease-out;
+    max-width: 80vw;
 }
 
 .stick {
-	position: fixed;
-	background-color: white;
+    position: fixed;
+    background-color: white;
 }
 
 .show {
-	transform: translate(0);
+    transform: translate(0);
 }
 
 .Navlinks {
-	align-items: flex-start;
+    align-items: flex-start;
 }
 
 .bagIcon {
-	margin: 0 0.5rem;
-	fill: var(--c-dark);
+    margin: 0 0.5rem;
+    fill: var(--c-dark);
 }
 
 .Brand {
-	font-size: 1rem;
-	font-weight: bold;
-	font-family: var(--mont);
+    font-size: 1rem;
+    font-weight: bold;
+    font-family: var(--mont);
 }
 
 .Brand:hover {
-	font-family: var(--mont);
+    font-family: var(--mont);
 }
 
 .buttonGroup {
-	display: flex;
-	align-items: center;
+    display: flex;
+    align-items: center;
 }
 
 .toggleButton {
-	margin-left: 1rem;
+    margin-left: 1rem;
 }
 
 @media only screen and (min-width: 992px) {
-	.Navbar {
-		padding: 0.5rem 2rem;
-		background-color: initial;
-		box-shadow: unset;
-		-webkit-box-shadow: unset;
-		-moz-box-shadow: unset;
-		border: none;
-	}
+    .Navbar {
+        padding: 0.5rem 2rem;
+        background-color: initial;
+        box-shadow: unset;
+        -webkit-box-shadow: unset;
+        -moz-box-shadow: unset;
+        border: none;
+    }
 
-	.Navbar a {
-		font-size: 0.8rem;
-		margin-right: 1rem;
-	}
+    .Navbar a {
+        font-size: 0.8rem;
+        margin-right: 1rem;
+    }
 
-	.Navlinks a {
-		position: relative;
-	}
+    .Navlinks a {
+        position: relative;
+    }
 
-	.Navlinks a::before {
-		content: "";
-		position: absolute;
-		z-index: -1;
-		bottom: 0;
-		left: 0;
-		width: 100%;
-		height: 100%;
-		border-bottom: 2px solid var(--c-dark);
-		border-radius: 1px;
-		transform: scaleX(0);
-		transition: all 0.1s;
-	}
+    .Navlinks a::before {
+        content: "";
+        position: absolute;
+        z-index: -1;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        border-bottom: 2px solid var(--c-dark);
+        border-radius: 1px;
+        transform: scaleX(0);
+        transition: all 0.1s;
+    }
 
-	.Navlinks a:hover::before {
-		transform: scale(1);
-	}
+    .Navlinks a:hover::before {
+        transform: scale(1);
+    }
 
-	.Brand {
-		margin-right: 2rem;
-	}
+    .Brand {
+        margin-right: 2rem;
+    }
 
-	.collapseable {
-		display: flex;
-		flex-direction: row;
-		justify-content: space-between;
-		width: 100%;
-		align-items: center;
-		position: relative;
-		background-color: transparent;
-		padding: initial;
-		height: auto;
-		transform: initial;
-		margin: 0 1rem;
-	}
+    .collapseable {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        width: 100%;
+        align-items: center;
+        position: relative;
+        background-color: transparent;
+        padding: initial;
+        height: auto;
+        transform: initial;
+        margin: 0 1rem;
+    }
 
-	.scrolled {
-		background-color: white;
-		border-bottom: var(--std-border);
-	}
+    .scrolled {
+        background-color: white;
+        border-bottom: var(--std-border);
+    }
 
-	.scrolled.withHero a {
-		color: inherit !important;
-	}
+    .scrolled.withHero a {
+        color: inherit !important;
+    }
 
-	.withHero .bagIcon {
-		fill: var(--c-dark);
-	}
+    .withHero .bagIcon {
+        fill: var(--c-dark);
+    }
 
-	.withHero.scrolled .bagIcon {
-		fill: var(--c-dark);
-	}
+    .withHero.scrolled .bagIcon {
+        fill: var(--c-dark);
+    }
 
-	.SearchForm {
-		width: 50%;
-		display: flex;
-		justify-content: flex-end;
-	}
+    .SearchForm {
+        width: 50%;
+    }
 
-	.SearchBar {
-		width: 50%;
-		transition: width 100ms ease-in;
-	}
+    .SearchBarWrapper {
+        width: 100%;
+        align-items: flex-end;
+    }
 
-	.SearchForm > .SearchBar:focus {
-		width: 100%;
-		border: var(--std-border);
-	}
+    .SearchBar {
+        width: 50%;
+        transition: width 100ms ease-in;
+    }
+
+    .SearchForm .SearchBar:focus {
+        width: 100%;
+        border: var(--std-border);
+    }
 }
