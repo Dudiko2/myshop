@@ -1,6 +1,30 @@
+.wrapper {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+}
+
 .SearchBar {
-	background: var(--c-light-gray);
-	border: none;
-	border-radius: 3px;
-	padding: 0.2rem 1rem;
+    background: var(--c-light-gray);
+    border: none;
+    border-radius: 3px;
+    padding: 0.2rem 1rem;
+}
+
+.SearchBar:not(:focus) + .suggestions {
+    display: none;
+}
+
+.suggestions {
+    position: absolute;
+    top: 120%;
+    width: 100%;
+    background-color: white;
+    border: var(--std-border);
+}
+
+.suggestions > * {
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
 }
