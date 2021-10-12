@@ -2,6 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { FC } from "react";
 import { Col, Container, Row } from "react-bootstrap";
+import { shortenText } from "../lib/utils";
 import type { ShopifyProduct } from "../services/shopify";
 import styles from "../styles/ItemGallery.module.css";
 import Price from "./Price";
@@ -33,13 +34,6 @@ const Item = ({ product }: ItemProps) => {
     const path = `/products/${handle}`;
     const firstVariant = product.variants[0];
     const charLimit = 25;
-    const normalizedTitle =
-        title.length > charLimit
-            ? title
-                  .slice(0, charLimit - 4)
-                  .trimEnd()
-                  .concat("...")
-            : title;
 
     const currencyCode = firstVariant.priceV2?.currencyCode as string;
 
@@ -60,7 +54,7 @@ const Item = ({ product }: ItemProps) => {
 
                         <div className={styles.cardbody}>
                             <div className={styles.cardtitle}>
-                                {normalizedTitle}
+                                {shortenText(title, charLimit)}
                             </div>
                             <Price
                                 currencyCode={currencyCode}

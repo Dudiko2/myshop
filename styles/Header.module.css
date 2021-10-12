@@ -155,7 +155,7 @@
         transition: width 100ms ease-in;
     }
 
-    .SearchForm .SearchBar:focus {
+    .SearchBarWrapper:focus-within .SearchBar {
         width: 100%;
         border: var(--std-border);
     }
