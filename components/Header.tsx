@@ -1,19 +1,45 @@
 import { Navbar, Nav, Container } from "react-bootstrap";
-import { FC, useState, useEffect, CSSProperties } from "react";
+import { FC, useState, useEffect } from "react";
 import Link from "next/link";
-import styles from "../styles/Header.module.css";
+import MobileHeader from "./MobileHeader";
 import IconBag from "./IconBag";
-import { useCart } from "../lib/cart/index";
+import { useCart } from "../lib/cart";
 import SearchBar from "./SearchBar";
-
-// NOTE: Revise links
+import styles from "../styles/Header.module.css";
+import { useRouter } from "next/router";
 
 interface Props {
     withHero: boolean;
 }
 
 const Header: FC<Props> = ({ withHero }) => {
-    const [isOpen, setIsOpen] = useState(false);
+    const [header, setHeader] = useState<any>(null);
+    const router = useRouter();
+
+    useEffect(() => {
+        // hardcoded value: big no-no
+        const isMobile = () => window.innerWidth < 992;
+
+        const handleResize = () => {
+            if (isMobile()) {
+                setHeader(() => <MobileHeader />);
+            } else {
+                setHeader(() => <DesktopHeader withHero={withHero} />);
+            }
+        };
+
+        window.addEventListener("resize", handleResize);
+        handleResize();
+
+        return () => window.removeEventListener("resize", handleResize);
+    }, [router.isReady, withHero]);
+
+    return header;
+};
+
+// NOTE: Revise links
+
+const DesktopHeader: FC<Props> = ({ withHero }) => {
     const [isScrolled, setIsScrolled] = useState(false);
     const cart = useCart();
 
@@ -32,10 +58,6 @@ const Header: FC<Props> = ({ withHero }) => {
         };
     }, [isScrolled]);
 
-    const toggleMenu = () => {
-        setIsOpen(!isOpen);
-    };
-
     return (
         <Navbar
             expand="lg"
@@ -43,74 +65,40 @@ const Header: FC<Props> = ({ withHero }) => {
                 withHero ? styles.withHero : ""
             }`}
         >
-            <Container>
+            <Container className={styles.cont}>
                 <Link passHref href="/">
                     <Navbar.Brand className={styles.Brand}>MYSHOP</Navbar.Brand>
                 </Link>
-                <div
-                    className={`${styles.collapseable} ${
-                        isOpen ? styles.show : ""
-                    }`}
+                <Nav className={`${styles.Navlinks} capitalize`}>
+                    <Nav.Item>
+                        <Link passHref href="/">
+                            <Nav.Link>collections</Nav.Link>
+                        </Link>
+                    </Nav.Item>
+                    <Nav.Item>
+                        <Nav.Link>about</Nav.Link>
+                    </Nav.Item>
+                </Nav>
+                <form
+                    action="/products"
+                    className={styles.SearchForm}
+                    autoComplete="off"
                 >
-                    <Nav className={`${styles.Navlinks} capitalize`}>
-                        <Nav.Item>
-                            <Link passHref href="/">
-                                <Nav.Link>collections</Nav.Link>
-                            </Link>
-                        </Nav.Item>
-                        <Nav.Item>
-                            <Nav.Link>about</Nav.Link>
-                        </Nav.Item>
-                    </Nav>
-                    <form
-                        action="/products"
-                        className={styles.SearchForm}
-                        autoComplete="off"
-                    >
-                        <SearchBar
-                            wrapperClassName={styles.SearchBarWrapper}
-                            inputClassName={styles.SearchBar}
-                            predictive
-                        />
-                    </form>
-                </div>
+                    <SearchBar
+                        wrapperClassName={styles.SearchBarWrapper}
+                        inputClassName={styles.SearchBar}
+                        predictive
+                    />
+                </form>
                 <div className={styles.buttonGroup}>
                     <IconBag
                         className={styles.bagIcon}
                         height={"1.6rem"}
                         amountInBag={cart.size}
                     />
-                    <Navbar.Toggle
-                        className={styles.toggleButton}
-                        onClick={toggleMenu}
-                    />
                 </div>
-                <Backdrop show={isOpen} closeFunc={() => setIsOpen(false)} />
             </Container>
         </Navbar>
-    );
-};
-
-interface BackdropProps {
-    show: boolean;
-    zIndex?: number;
-    closeFunc: () => void;
-}
-
-const Backdrop: FC<BackdropProps> = ({ show, zIndex = 0, closeFunc }) => {
-    const display = show ? "block" : "none";
-    const styleObj: CSSProperties = {
-        position: "fixed",
-        top: "0",
-        left: "0",
-        right: "0",
-        bottom: "0",
-        backgroundColor: "black",
-        opacity: 0.1,
-    };
-
-    return (
-        <div onClick={closeFunc} style={{ display, zIndex, ...styleObj }}></div>
     );
 };
 

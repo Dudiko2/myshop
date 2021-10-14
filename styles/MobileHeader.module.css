@@ -1,0 +1,87 @@
+.Navbar {
+    position: fixed;
+    flex-direction: column;
+    padding: 0.5rem;
+    width: 100%;
+    z-index: 100;
+    transition: all 200ms linear;
+    background-color: white;
+    border-bottom: 1px solid rgb(212, 212, 212);
+    letter-spacing: 0.2rem;
+}
+
+.Navbar > * + * {
+    margin-top: 1rem;
+}
+
+.Navbar a {
+    font-family: var(--mont);
+}
+
+.collapseable {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 100;
+    background-color: white;
+    padding: 2rem;
+    height: 100vh;
+    width: 80vw;
+    transform: translateX(-100%);
+    transition-duration: 200ms;
+    transition-timing-function: ease-out;
+    max-width: 80vw;
+}
+
+.show {
+    transform: translate(0);
+}
+
+.Navlinks {
+    align-items: flex-start;
+}
+
+.bagIcon {
+    margin: 0 0.5rem;
+    fill: var(--c-dark);
+}
+
+.Brand {
+    font-size: 1rem;
+    font-weight: bold;
+    font-family: var(--mont);
+}
+
+.Brand:hover {
+    font-family: var(--mont);
+}
+
+.buttonGroup {
+    display: flex;
+    align-items: center;
+}
+
+.toggleButton {
+    margin-left: 1rem;
+}
+
+#searchCont {
+    justify-content: center;
+}
+
+.SearchForm {
+    width: 100%;
+}
+
+.SearchBar {
+    background-color: white;
+    border: var(--std-border);
+}
+
+.SearchBar:focus,
+.SearchBar:active {
+    background-color: #eaeaea;
+}

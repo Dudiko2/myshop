@@ -23,6 +23,7 @@
 }
 
 .box {
+    position: relative;
     padding: 2rem;
 }
 
