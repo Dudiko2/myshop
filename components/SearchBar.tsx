@@ -41,7 +41,7 @@ const SearchBar: FC<Props> = ({
                 value={searchValue}
                 onChange={handleChange}
             />
-            {predictive && <Suggestions suggestions={suggestions} />}
+            <Suggestions suggestions={suggestions} />
         </div>
     );
 };

@@ -7,23 +7,23 @@ import Breadcrumbs from "../components/Breadcrumbs";
 import styles from "../styles/Layout.module.css";
 
 interface Props {
-	children?: ReactNode;
-	showHero?: boolean;
+    children?: ReactNode;
+    showHero?: boolean;
 }
 
 const Layout: FC<Props> = ({ children, showHero = false }) => {
-	return (
-		<div className={styles.Layout}>
-			<Header withHero={showHero} />
-			{showHero && <Hero />}
-			<main>
-				<Breadcrumbs />
-				{children}
-			</main>
-			<Footer />
-			<ButtonGithub />
-		</div>
-	);
+    return (
+        <div className={styles.Layout}>
+            <Header withHero={showHero} />
+            {showHero && <Hero />}
+            <main>
+                <Breadcrumbs />
+                {children}
+            </main>
+            <Footer />
+            <ButtonGithub />
+        </div>
+    );
 };
 
 export default Layout;
