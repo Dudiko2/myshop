@@ -5,6 +5,7 @@ import { usePredictiveSearch } from "../lib/search/hooks";
 import { ShopifyProduct } from "../services/shopify";
 import styles from "../styles/SearchBar.module.css";
 import { shortenText } from "../lib/utils";
+import { Spinner } from "react-bootstrap";
 
 interface Props {
     inputClassName?: string;
@@ -20,7 +21,7 @@ const SearchBar: FC<Props> = ({
     predictive = false,
 }) => {
     const [searchValue, setSearchValue] = useState(value);
-    const { suggestions, predict } = usePredictiveSearch();
+    const { suggestions, predict, loading } = usePredictiveSearch();
 
     const handleChange = useCallback(
         (e) => {
@@ -41,17 +42,33 @@ const SearchBar: FC<Props> = ({
                 value={searchValue}
                 onChange={handleChange}
             />
-            <Suggestions suggestions={suggestions} />
+            <Suggestions suggestions={suggestions} loading={loading} />
         </div>
     );
 };
 
 interface SuggestionsProps {
     suggestions: ShopifyProduct[];
+    loading: boolean;
 }
 
-const Suggestions: FC<SuggestionsProps> = ({ suggestions }) => {
+const Suggestions: FC<SuggestionsProps> = ({ suggestions, loading }) => {
     // Add interactivity: selection with arrows
+    if (loading) {
+        return (
+            <div
+                className={styles.suggestions}
+                style={{
+                    display: "flex",
+                    justifyContent: "center",
+                    alignItems: "center",
+                    padding: "1rem",
+                }}
+            >
+                <Spinner animation="border" />
+            </div>
+        );
+    }
 
     if (!suggestions.length) return null;
 
