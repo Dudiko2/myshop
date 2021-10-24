@@ -1,45 +1,40 @@
 import { useRouter } from "next/router";
+import { getOneQueryParam } from "../utils";
 
 export interface SearchQuery {
-	[x: string]: string;
-	q: string;
-	sortby: string;
+    [x: string]: string;
+    q: string;
+    sortby: string;
 }
 
 export const defaultSearchQuery: SearchQuery = {
-	q: "",
-	sortby: "TITLE",
-};
-
-const getOneQueryParam = (param?: string | Array<string>) => {
-	if (!param) return null;
-
-	return param?.constructor === Array ? param[0] : (param as string);
+    q: "",
+    sortby: "TITLE",
 };
 
 export const getSearchQueryFromURL = (query: any): SearchQuery => {
-	const searchQuery = { ...defaultSearchQuery };
+    const searchQuery = { ...defaultSearchQuery };
 
-	for (const key in query) {
-		if (key in searchQuery) {
-			searchQuery[key] = getOneQueryParam(query[key]) || searchQuery[key];
-		}
-	}
+    for (const key in query) {
+        if (key in searchQuery) {
+            searchQuery[key] = getOneQueryParam(query[key]) || searchQuery[key];
+        }
+    }
 
-	return searchQuery;
+    return searchQuery;
 };
 
 export const queryToString = (query: any): string => {
-	const searchEntries = Object.entries(query);
-	const pairs = searchEntries.map((e) => e.join("="));
-	const qs = `?${pairs.join("&")}`;
+    const searchEntries = Object.entries(query);
+    const pairs = searchEntries.map((e) => e.join("="));
+    const qs = `?${pairs.join("&")}`;
 
-	return qs;
+    return qs;
 };
 
 export const useSearchQuery = (): SearchQuery => {
-	const router = useRouter();
-	const searchQuery = getSearchQueryFromURL(router.query);
+    const router = useRouter();
+    const searchQuery = getSearchQueryFromURL(router.query);
 
-	return searchQuery;
+    return searchQuery;
 };

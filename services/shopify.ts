@@ -32,13 +32,17 @@ const normalizeResponse =
 
 export const fetchProducts = normalizeResponse(
     async (params: { num?: number }) => {
-        return await client.product.fetchAll(params.num);
+        return await (client.product.fetchAll(params.num) as Promise<
+            ShopifyProduct[]
+        >);
     }
 );
 
 export const fetchProductByHandle = normalizeResponse(
     async (params: { handle: string }) => {
-        return await client.product.fetchByHandle(params.handle);
+        return await (client.product.fetchByHandle(
+            params.handle
+        ) as Promise<ShopifyProduct>);
     }
 );
 

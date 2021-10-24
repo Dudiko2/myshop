@@ -5,6 +5,7 @@ import Layout from "../../wrappers/Layout";
 import Section from "../../wrappers/Section";
 import ProductPageMain from "../../components/ProductPageMain";
 import { fetchProductByHandle, fetchProducts } from "../../services/shopify";
+import { getOneQueryParam } from "../../lib/utils";
 
 interface ProductProps {
     product: ShopifyBuy.Product;
@@ -45,7 +46,7 @@ const Product: FC<ProductProps> = ({ product }) => {
 export const getStaticPaths: GetStaticPaths = async () => {
     const products = await fetchProducts({ num: 100 });
 
-    const paths = products.map((p: any) => ({
+    const paths = products.map((p) => ({
         params: { product: `${p.handle}` },
     }));
 
@@ -55,8 +56,9 @@ export const getStaticPaths: GetStaticPaths = async () => {
     };
 };
 
-export const getStaticProps: GetStaticProps = async ({ params }: any) => {
-    const product = await fetchProductByHandle({ handle: params.product });
+export const getStaticProps: GetStaticProps = async ({ params }) => {
+    const handle = getOneQueryParam(params?.product);
+    const product = handle ? await fetchProductByHandle({ handle }) : null;
 
     if (!product)
         return {

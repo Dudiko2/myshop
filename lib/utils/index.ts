@@ -6,3 +6,9 @@ export const shortenText = (str: string, charLimit: number): string => {
 
     return text;
 };
+
+export const getOneQueryParam = (param?: string | Array<string>) => {
+    if (!param) return null;
+
+    return param?.constructor === Array ? param[0] : (param as string);
+};
