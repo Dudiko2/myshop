@@ -19,6 +19,7 @@
 .suggestions {
     display: none;
     position: absolute;
+    z-index: 100;
     top: 120%;
     width: 100%;
     background-color: white;

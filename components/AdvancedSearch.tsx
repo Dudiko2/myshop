@@ -32,6 +32,7 @@ const AdvancedSearch: FC = () => {
                             <SearchBar
                                 value={searchQuery.q}
                                 inputClassName={styles.bar}
+                                predictive
                             />
                             <InputSelect
                                 id={"sortby"}

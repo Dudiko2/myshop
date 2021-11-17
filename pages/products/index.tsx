@@ -8,42 +8,42 @@ import { getSearchQueryFromURL } from "../../lib/search";
 import AdvancedSearch from "../../components/AdvancedSearch";
 
 interface Props {
-	products: ShopifyProduct[];
+    products: ShopifyProduct[];
 }
 
 const Products: FC<Props> = ({ products }) => {
-	// note: add support for pagination
+    // note: add support for pagination
 
-	return (
-		<Layout>
-			<Head>
-				<title>Products</title>
-			</Head>
-			<AdvancedSearch />
-			<ItemGallery products={products} />
-		</Layout>
-	);
+    return (
+        <Layout>
+            <Head>
+                <title>Products</title>
+            </Head>
+            <AdvancedSearch />
+            <ItemGallery products={products} />
+        </Layout>
+    );
 };
 
 export const getServerSideProps: GetServerSideProps = async ({ query }) => {
-	const searchQuery = getSearchQueryFromURL(query);
+    const searchQuery = getSearchQueryFromURL(query);
 
-	try {
-		const products = await fetchProductsAndSortBy({
-			queryString: searchQuery.q,
-			sortKey: searchQuery.sortby,
-		});
+    try {
+        const products = await fetchProductsAndSortBy({
+            queryString: searchQuery.q,
+            sortKey: searchQuery.sortby,
+        });
 
-		return {
-			props: {
-				products,
-			},
-		};
-	} catch (error) {
-		return {
-			redirect: { destination: "/products", permanent: false },
-		};
-	}
+        return {
+            props: {
+                products,
+            },
+        };
+    } catch (error) {
+        return {
+            redirect: { destination: "/products", permanent: false },
+        };
+    }
 };
 
 export default Products;
